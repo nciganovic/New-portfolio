@@ -1,0 +1,7 @@
+1. About me 
+2. My skills
+3. My projects
+4. In detail every project
+5. Projects history
+6. Contact
+
