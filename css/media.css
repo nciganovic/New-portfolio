@@ -1,17 +1,33 @@
 
 @media (min-width: 576px) { 
     h1{
-        font-size: 3.5rem;
+        font-size: 4rem;
     }
     .big-mt{
         margin-top: 50%;
     }
+    #intro-desc{
+        font-size: 2rem;
+    }
 }
 
-@media (min-width: 768px) {  }
+@media (min-width: 768px) { 
+ 
+    h1{
+        font-size: 5rem;
+    }
+
+ }
 
 
-@media (min-width: 992px) {  }
+@media (min-width: 992px) { 
+    h1{
+        font-size: 6rem;
+    } 
+    .big-mt{
+        margin-top: 30%;
+    }
+}
 
 
 @media (min-width: 1200px) {  }

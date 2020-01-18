@@ -58,6 +58,6 @@
 }
 .arrow{
     position: absolute !important;
-    bottom: 20%;
-    left: 5%;
+    bottom: -80%;
+    left: -1%;
 }
