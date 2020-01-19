@@ -39,7 +39,7 @@
         font-size: 3rem;
     }
     #about-me-txt p{
-        font-size: 1.5rem;
+        font-size: 1.2rem;
     }
     .fab{
         font-size: 2rem;
@@ -47,8 +47,8 @@
     #skills h2{
         font-size: 3rem;
     }
-    #skill-card{
-        
+    #projects h2{
+        font-size: 3rem;
     }
 }
 
