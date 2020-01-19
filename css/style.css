@@ -35,10 +35,12 @@
 .font-25{
     font-size: 2.5rem;
 }
+.font-15{
+    font-size: 1.5rem;
+}
 .h1{
     font-size: 2.5rem;
 }
-
 /* Intro page */
 #intro-page{
     background-image: url('../img/bg.jpg');
@@ -60,4 +62,36 @@
     position: absolute !important;
     bottom: -80%;
     left: -1%;
+}
+/* About me */
+#cv-btn{
+    background-color: #322e2f;
+    color: white;
+    padding-left: 7%;
+    padding-right: 7%;
+    padding-top: 3%;
+    padding-bottom: 3%;
+
+}
+.bg-prof{
+    background-image: url('../img/profile.jpg');
+    background-position: center; 
+    background-repeat: no-repeat; 
+    background-size: cover;
+}
+/* My skills */
+#skills{
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+#skill-icon{
+    font-size: 4rem;
+    padding-top: 5%;
+    padding-bottom: 5%;
+}
+#skill-card{
+    width: 250px;
+    /*border: 1px solid black !important;*/
+    margin: 1.5%;
+    background-color: #322e2f;
 }

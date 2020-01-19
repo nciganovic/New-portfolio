@@ -16,7 +16,15 @@
     h1{
         font-size: 5rem;
     }
-
+    .bg-prof{
+        display: block !important;
+    }
+    .img-prof{
+        display: none;
+    }
+    #about-me-txt{
+        margin-left: 7%;
+    }
  }
 
 
@@ -26,6 +34,21 @@
     } 
     .big-mt{
         margin-top: 30%;
+    }
+    #about-me-txt h2{
+        font-size: 3rem;
+    }
+    #about-me-txt p{
+        font-size: 1.5rem;
+    }
+    .fab{
+        font-size: 2rem;
+    }
+    #skills h2{
+        font-size: 3rem;
+    }
+    #skill-card{
+        
     }
 }
 
