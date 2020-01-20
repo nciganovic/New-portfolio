@@ -9,6 +9,19 @@
     #intro-desc{
         font-size: 2rem;
     }
+    .flip-container, .front, .back {
+        width: 500px;
+        height: 266px;
+    }
+    .big-mt-sm{
+        margin-top: 80px !important;
+    }
+    .cardTag{
+        font-size: 1.2rem;
+    }
+    .project-btn{
+        font-size: 1.5rem;
+    }
 }
 
 @media (min-width: 768px) { 

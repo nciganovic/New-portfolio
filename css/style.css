@@ -32,6 +32,9 @@
 .vh-100{
     height: 100vh;
 }
+.font-12{
+    font-size: 1.2rem;
+}
 .font-25{
     font-size: 2.5rem;
 }
@@ -100,6 +103,8 @@
     background-color: #ddd8d9;
 }
 
+/* PROJECTS */
+
 /* entire container, keeps perspective */
 .flip-container {
 	perspective: 1000px;
@@ -116,7 +121,7 @@
 
 /* flip speed goes here */
 .flipper {
-	transition: 0.6s;
+	transition: 0.8s;
 	transform-style: preserve-3d;
 
 	position: relative;
@@ -141,4 +146,28 @@
 /* back, initially hidden pane */
 .back {
 	transform: rotateY(180deg);
+}
+
+.cardTag{
+    padding: 3px 7px;
+    background-color: white;
+    color: black;
+    border-radius: 5px;
+    font-size: 0.8rem;
+}
+.project-btn{
+    background-color: white;
+    color: black;
+    font-size: 1.2rem;
+    padding: 10px 20px;
+    margin: 5px;
+    border-radius: 15px;
+}
+.bg-dark-grad{
+    background: rgb(119,117,120);
+    background: linear-gradient(322deg, rgba(119,117,120,1) 0%, rgba(94,92,94,1) 0%, rgba(73,71,73,1) 10%, rgba(66,65,66,1) 16%, rgba(59,59,59,1) 22%, rgba(53,53,53,1) 33%, rgba(0,0,0,1) 100%);
+}
+/* Footer */
+footer{
+    margin-top: 10%;
 }
