@@ -67,3 +67,20 @@ window.onresize = function(event) {
     }    
 };
 
+
+/* Modal */
+$(document).ready(function(){
+    $(".open-modal-btn").click(function(e){
+        e.preventDefault();
+        
+        $('#modal').css('display','block');
+
+    })
+
+    $(".close-modal-btn").click(function(e){
+        e.preventDefault();
+        
+        $('#modal').css('display','none');
+ 
+    })
+})
