@@ -184,3 +184,11 @@ footer{
 .mt-30{
     margin-top: 30%;
 }
+.container-custom{
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+}
+.modal-desc{
+    display: none;
+}

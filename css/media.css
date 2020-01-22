@@ -38,6 +38,12 @@
     #about-me-txt{
         margin-left: 7%;
     }
+    .d-block-md{
+        display: block !important;
+    }
+    .modal-desc{
+        display: block;
+    }
  }
 
 
