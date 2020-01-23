@@ -41,6 +41,9 @@
 .font-15{
     font-size: 1.5rem;
 }
+.font-08{
+    font-size: 0.8rem;
+}
 .h1{
     font-size: 2.5rem;
 }
@@ -182,7 +185,7 @@ footer{
     height: 100vh;
 }
 .mt-30{
-    margin-top: 30%;
+    margin-top: 200px;
 }
 .container-custom{
     width: 90%;
@@ -191,4 +194,13 @@ footer{
 }
 .modal-desc{
     display: none;
+}
+.abs-top-right{
+    position: absolute;
+    top:20px;
+    right: 20px;
+}
+.souce-btn{
+    padding: 10px 20px;
+    background-color: black;
 }

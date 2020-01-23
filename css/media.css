@@ -41,9 +41,6 @@
     .d-block-md{
         display: block !important;
     }
-    .modal-desc{
-        display: block;
-    }
  }
 
 
@@ -68,6 +65,9 @@
     }
     #projects h2{
         font-size: 3rem;
+    }
+    .modal-desc{
+        display: flex;
     }
 }
 
