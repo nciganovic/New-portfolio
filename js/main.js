@@ -14,7 +14,6 @@ if(window.innerWidth > 992){
             nav.classList.remove('dark-nav');
         }
         window.addEventListener('scroll', function(e){
-            //console.log(window.scrollY);
             if(window.innerWidth > 992){
                 if(window.scrollY > 5){
                     nav.classList.remove('transp-nav');
@@ -35,7 +34,6 @@ else{
         
 window.onresize = function(event) {
     if(window.innerWidth > 992){
-        console.log(window.innerWidth);
         var nav = document.getElementsByTagName('nav')[0];
         if(window.scrollY > 5){
             nav.classList.remove('transp-nav');
@@ -46,7 +44,6 @@ window.onresize = function(event) {
             nav.classList.remove('dark-nav');
         }
         window.addEventListener('scroll', function(e){
-            //console.log(window.scrollY);
             if(window.innerWidth > 992){
                 if(window.scrollY > 5){
                     nav.classList.remove('transp-nav');
@@ -87,47 +84,60 @@ $(document).ready(function(){
         title: "CLOTHYY",
         tech: ["HTML 5", "CSS 3", "Javascript | Jquery library", "Python 3.7 | Django Framework", "MySQL", "Linux Server", "Apache 2"],
         desc: "Contains features like shopping cart, user shopping history, searching for specific product, stripe integration.",
-        img:""
+        img:"clothyy-final.mp4"
     },
     {
         title: "Email Developer",
         tech: ["HTML 5", "CSS 3", "Javascript"],
         desc: "Simple HTML and CSS landing page for selling online courses i made in 2 days as a youtube challenge. ",
-        img:""
+        img:"htmlemail-final.mp4"
     },
     {
         title: "IMPERIAL",
         tech: ["HTML 5", "CSS 3", "Javascript | Jquery"],
         desc: "Imperial is restaurant website. First website i made that has Javascript and Jquery implemented. Also has regex for form validation.",
-        img:""
+        img:"imperial-fianl.mp4"
     },
     {
         title: "Read And Write",
         tech: ["HTML 5", "CSS 3", "Python 3.7 | Django"],
         desc: "Read and Write is a website for bloggers to write their blogs. Users can create, read, update, delete their blogs. Users can also view their stats, like and comment.",
-        img:""
+        img:"randw-final.mp4"
     },
     {
         title: "Amazon REST API",
         tech: ["Python 3.7", "Django REST Framework", "Beautiful Soup 4"],
         desc: "REST API for amazon.com, let's you get information about certain products. Database is automaticly filled using script with Beautiful Soup",
-        img:""
+        img:"rest-final.mp4"
     },
     {
         title: "LEARN.PY",
         tech: ["HTML 5", "CSS 3", "Bootstap 4"],
         desc: "Mobile friendly website for selling online Python courses.",
-        img:""
+        img:"learnpy-final.mp4"
     },
     ]
 
     function fillData(item){
+        console.log(item);
         $('#proj-title').text(item.title);
         $('#proj-list').html('');
         for(x in item.tech){
             $('#proj-list').append(`<li class="font-08">${item.tech[x]}</li>`) 
         }
         $('#proj-desc').text(item.desc);
+        
+        $('#video').html(`
+            <video autoplay controls loop muted id="video" class="w-100 border">
+                <source src="video/${item.img}" type="video/mp4">
+            </video>
+        `)
+
+
+        //<video autoplay controls loop muted id="video" class="w-100 border">
+        //<source src="video/${item.img}" type="video/mp4">
+        //</video>
+
     }
 
     $('#clothyy').click(function(){
