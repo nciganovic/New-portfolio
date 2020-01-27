@@ -66,14 +66,17 @@
     #projects h2{
         font-size: 3rem;
     }
-    .modal-desc{
-        display: flex;
-    }
 }
 
 
 @media (min-width: 1200px) {  
     #proj-desc{
         display: block !important;
+    }
+    .modal-desc{
+        display: flex;
+    }
+    .close-sm{
+        display: none;
     }
 }
