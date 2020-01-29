@@ -210,3 +210,25 @@ footer{
 .close-sm{
     background-color: transparent !important;
 }
+.bg-yellow-1{
+    background-color: #f7bb23;;
+}
+.bg-blue-1{
+    background-color: #7da0fa;
+}
+.bg-blue-2{
+    background-color: #4e7df5;
+}
+.bg-green{
+    background-color: #a7fc97;
+}
+.bg-yellow-2{
+    background-color: #d3f575;
+}
+.bg-purple{
+    background-color: #8037f5;
+}
+.mtb-auto{
+    margin-top: auto;
+    margin-bottom: auto;
+}
