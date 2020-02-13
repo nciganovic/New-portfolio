@@ -3,9 +3,6 @@
     h1{
         font-size: 4rem;
     }
-    .big-mt{
-        margin-top: 50%;
-    }
     #intro-desc{
         font-size: 2rem;
     }
@@ -48,9 +45,6 @@
     h1{
         font-size: 6rem;
     } 
-    .big-mt{
-        margin-top: 30%;
-    }
     #about-me-txt h2{
         font-size: 3rem;
     }

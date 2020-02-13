@@ -61,9 +61,6 @@ html {
 .darker-bg{
     background-color: rgba(0, 0, 0, 0.7);
 }
-.big-mt{
-    margin-top: 70%;
-}
 .pos-rel{
     position: relative;
 }
@@ -80,6 +77,11 @@ html {
     padding-right: 7%;
     padding-top: 3%;
     padding-bottom: 3%;
+
+}
+#cv-btn:hover{
+    color: rgb(167, 166, 166);
+    text-decoration: none;
 
 }
 .bg-prof{
@@ -103,10 +105,11 @@ html {
     border: 1px solid black !important;
     margin: 1.5%;
     transition: all .2s ease-in-out;
+    box-shadow: 5px 5px 5px 0px rgba(161,158,161,1);
 }
 #skill-card:hover{
     transform: scale(1.1);
-    background-color: #ddd8d9;
+    background-color: #eefac2;
 }
 
 /* PROJECTS */
