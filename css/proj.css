@@ -1,0 +1,41 @@
+.tech-used-list {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-ms-flex-wrap: wrap;
+	flex-wrap: wrap;
+}
+
+.tech-used-list div {
+	font-size: 65%;
+	text-transform: uppercase;
+	color: white;
+	padding: 3px 8px;
+	border-radius: 100px;
+	margin-right: 7px;
+	margin-top: 7px;
+    background-color: #105a8b;
+    font-size: 0.8rem;
+}
+
+.external-link {
+	margin-top: 20px;
+	border-top: 1px solid #3875d8;
+	padding-top: 20px;
+}
+
+.btn-full:link, .btn-full:visited {
+    background-color: #0e4d88;
+    border: 1px solid #0e4d88;
+    color: #fcfcfc;
+    margin-right: 15px;
+}
+
+.project-holder {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
+}

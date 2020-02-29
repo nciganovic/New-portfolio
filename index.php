@@ -2,6 +2,7 @@
   include("include/connection.php"); 
   include("include/getlogo.php");
 
+  /* Selecting all for skills */
   $sql = "SELECT Name FROM skillsection";
   $stmt = $pdo->prepare($sql);
   $stmt->execute();
@@ -18,6 +19,26 @@
     $stmt->execute();
     $allData = $stmt->fetchAll();
     $arrSkills[$i] = $allData;
+
+  }
+
+  /*Selecting for projects */ 
+  $sqlProj = "SELECT * FROM projects";
+  $stmt = $pdo->prepare($sqlProj);
+  $stmt->execute();
+  $allProjects = $stmt->fetchAll();
+  $arrProjSkills = [];
+
+  for($i = 0; $i < count($allProjects); $i++){
+
+    $id = $allProjects[$i]["Id"];
+    
+    $sql = "SELECT s.Name FROM skills s INNER JOIN projectskills ps ON s.Id = ps.skillid INNER JOIN projects p on ps.projectid = p.Id WHERE p.id = :id";
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindParam(":id", $id);
+    $stmt->execute();
+    $allData = $stmt->fetchAll();
+    $arrProjSkills[$i] = $allData;
 
   }
 
@@ -55,6 +76,7 @@
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/proj.css">
     <link rel="stylesheet" type="text/css" href="css/media.css">
 </head>
 <body>
@@ -128,208 +150,38 @@
     </section>
     <!-- MY SKILLS END -->
 
-    <!-- PROJECTS START -->
-    <section id="projects">
-      <div class="container">
-        <div class="row d-flex justify-content-center align-items-center">
-          <div class="col-12">
-            <h2 class="text-center mont mt-5"><strong>PROJECTS</strong></h2>
+  <section class="section-projects" id="projects">
+    <div class="container">
+      <h2 class="text-center mont m-5">PROJECTS</h2>
+    </div>
+    <div class="container">
+      <!-- First Featured Project -->
+      <?php for($i = 0; $i < count($allProjects); $i++): ?>
+      <div class="row project-holder mt-5">
+        <div class="col-lg-6 aos-init aos-animate" data-aos="fade-up-right" data-aos-duration="1000">
+          <a href="#" target="_blank">
+            <img src="img/<?=$allProjects[$i]["imgsrc"]?>" alt="Portfolio Website" class="img-fluid">
+          </a>
+        </div>
+        <div class="col-lg-6 aos-init aos-animate" data-aos="fade-up-left" data-aos-duration="1000">
+          <h4><?=$allProjects[$i]["title"]?></h4>
+          <p><?=$allProjects[$i]["description"]?></p>
+          <div class="tech-used-list">
+            <?php foreach($arrProjSkills[$i] as $ps): ?>
+            <div><?= $ps[0] ?></div>
+            <?php endforeach ?>
           </div>
-          
-          <!-- SINGLE PROJECT START -->
-          <div class="ml-3 mr-3">  
-            <div class="flip-container mt-5 ml-auto mr-auto" ontouchstart="this.classList.toggle('hover');">
-              <div class="flipper">
-                <div class="col-12 front rounded overflow-hidden p-0">
-                  <img class="w-100" src="img/clothyy.png" alt="proj1">
-                </div>
-                <div class="col-12 back bg-dark-grad rounded p-0">
-                  <p class="text-center text-light mt-4 big-mt-sm">
-                    <span class="cardTag bg-yellow-1">HTML5</span> 
-                    <span class="cardTag bg-blue-1">CSS3</span> 
-                    <span class="cardTag bg-blue-2">Jquery</span> 
-                    <span class="cardTag bg-green">Django</span>
-                    <span class="cardTag bg-blue-1">MYSQL</span>
-                  </p>
-                  <div class="mt-5 d-flex justify-content-center">
-                    <span class="project-btn rounded-pill">
-                      <a class="text-dark text-decoration-none" target="blank" href="http://www.clothyy.com/">VISIT</a>
-                    </span> 
-                    <span class="project-btn rounded-pill">
-                      <a id="clothyy" class="text-dark text-decoration-none open-modal-btn" href="#">MORE</a>
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-12">
-              <p class="text-center font-12 m-0"><strong>Clothyy.com</strong></p>
-              <p class="text-center">Website for selling clothes to people.</p>
-            </div>
+          <div class="external-link">
+            <a href="<?=$allProjects[$i]["weburl"]?>" class="btn btn-full">Visit website</a>
+            <a href="<?=$allProjects[$i]["giturl"]?>" class="btn btn-full">Source code</a>
+            <a id="<?=$allProjects[$i]["demoid"]?>" href="#" class="btn btn-full open-modal-btn">Demo</a>
           </div>
-          <!--SINGLE PROJECT END-->
-
-          <!-- SINGLE PROJECT START -->
-          <div class="ml-3 mr-3">
-            <div class="flip-container mt-5 ml-auto mr-auto" ontouchstart="this.classList.toggle('hover');">
-              <div class="flipper">
-                <div class="col-12 front rounded overflow-hidden p-0">
-                  <img class="w-100" src="img/htmlemail.png" alt="proj1">
-                </div>
-                <div class="col-12 back bg-dark-grad rounded p-0">
-                  <p class="text-center text-light mt-4 big-mt-sm">
-                    <span class="cardTag bg-yellow-1">HTML5</span> 
-                    <span class="cardTag bg-blue-1">CSS3</span> 
-                    <span class="cardTag bg-blue-2">Jquery</span> 
-                    <span class="cardTag bg-yellow-2">Javascript</span>
-                  </p>
-                  <div class="mt-5 d-flex justify-content-center">
-                    <span class="project-btn rounded-pill">
-                      <a class="text-dark text-decoration-none" target="blank" href="https://htmldeveloper.netlify.com/">VISIT</a>
-                    </span> 
-                    <span class="project-btn rounded-pill">
-                      <a id="htmlemail" class="text-dark text-decoration-none open-modal-btn" href="#">MORE</a>
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-12">
-              <p class="text-center font-12 m-0"><strong>HTML Email Developer Course</strong></p>
-              <p class="text-center">Landing page for selling email developer course.</p>
-            </div>
-          </div>
-          <!--SINGLE PROJECT END-->
-
-          <!-- SINGLE PROJECT START -->
-          <div class="ml-3 mr-3">
-            <div class="flip-container mt-5 ml-auto mr-auto" ontouchstart="this.classList.toggle('hover');">
-              <div class="flipper">
-                <div class="col-12 front rounded overflow-hidden p-0">
-                  <img class="w-100" src="img/imperial.png" alt="proj1">
-                </div>
-                <div class="col-12 back bg-dark-grad rounded p-0">
-                  <p class="text-center text-light mt-4 big-mt-sm">
-                    <span class="cardTag bg-yellow-1">HTML5</span> 
-                    <span class="cardTag bg-blue-1">CSS3</span> 
-                    <span class="cardTag bg-yellow-2">Javascript</span>
-                    <span class="cardTag bg-blue-2">Jquery</span> 
-                  </p>
-                  <div class="mt-5 d-flex justify-content-center">
-                    <span class="project-btn rounded-pill">
-                      <a class="text-dark text-decoration-none" target="blank" href="https://imperial.netlify.com/">VISIT</a>
-                    </span> 
-                    <span class="project-btn rounded-pill">
-                      <a id="imperial" class="text-dark text-decoration-none open-modal-btn" href="#">MORE</a>
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-12">
-              <p class="text-center font-12 m-0"><strong>Imperial</strong></p>
-              <p class="text-center">Restourant website for selling food.</p>
-            </div>
-          </div>
-          <!--SINGLE PROJECT END-->
-
-          <!-- SINGLE PROJECT START -->
-          <div class="ml-3 mr-3">
-            <div class="flip-container mt-5 ml-auto mr-auto" ontouchstart="this.classList.toggle('hover');">
-              <div class="flipper">
-                <div class="col-12 front rounded overflow-hidden p-0">
-                  <img class="w-100" src="img/randw.png" alt="proj1">
-                </div>
-                <div class="col-12 back bg-dark-grad rounded p-0">
-                  <p class="text-center text-light mt-4 big-mt-sm">
-                    <span class="cardTag bg-yellow-1">HTML5</span> 
-                    <span class="cardTag bg-blue-1">CSS3</span> 
-                    <span class="cardTag bg-green">Django</span>
-                    <span class="cardTag bg-blue-2">SQLite</span> 
-                  </p>
-                  <div class="mt-5 d-flex justify-content-center">
-                    <span class="project-btn rounded-pill">
-                      <a class="text-dark text-decoration-none" target="blank" href="https://read-and-write.herokuapp.com/">VISIT</a>
-                    </span> 
-                    <span class="project-btn rounded-pill">
-                      <a id="randw" class="text-dark text-decoration-none open-modal-btn" href="#">MORE</a>
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-12">
-              <p class="text-center font-12 m-0"><strong>Read and Write</strong></p>
-              <p class="text-center">Writing blogs and interacting with other users.</p>
-            </div>
-          </div>
-          <!--SINGLE PROJECT END-->
-
-          <!-- SINGLE PROJECT START -->
-          <div class="ml-3 mr-3">
-            <div class="flip-container mt-5 ml-auto mr-auto" ontouchstart="this.classList.toggle('hover');">
-              <div class="flipper">
-                <div class="col-12 front rounded overflow-hidden p-0">
-                  <img class="w-100" src="img/rest.png" alt="proj1">
-                </div>
-                <div class="col-12 back bg-dark-grad rounded p-0">
-                  <p class="text-center text-light mt-4 big-mt-sm">
-                    <span class="cardTag bg-yellow-1">Python</span> 
-                    <span class="cardTag bg-green">Django REST</span> 
-                    <span class="cardTag bg-blue-1">Beautiful Soup 4</span>
-                  </p>
-                  <div class="mt-5 d-flex justify-content-center">
-                    <span class="project-btn rounded-pill">
-                      <a class="text-dark text-decoration-none" target="blank" href="https://rest-project-amazon.herokuapp.com/">VISIT</a>
-                    </span> 
-                    <span class="project-btn rounded-pill">
-                      <a id="restapi" class="text-dark text-decoration-none open-modal-btn" href="#">MORE</a>
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-12">
-              <p class="text-center font-12 m-0"><strong>Amazon REST API</strong></p>
-              <p class="text-center">Created REST API for amazon products.</p>
-            </div>
-          </div>
-          <!--SINGLE PROJECT END-->
-
-          <!-- SINGLE PROJECT START -->
-          <div class="ml-3 mr-3">
-            <div class="flip-container mt-5 ml-auto mr-auto" ontouchstart="this.classList.toggle('hover');">
-              <div class="flipper">
-                <div class="col-12 front rounded overflow-hidden p-0">
-                  <img class="w-100" src="img/learnpy.png" alt="proj1">
-                </div>
-                <div class="col-12 back bg-dark-grad rounded p-0">
-                  <p class="text-center text-light mt-4 big-mt-sm">
-                    <span class="cardTag bg-yellow-1">HTML5</span> 
-                    <span class="cardTag bg-blue-1">CSS3</span> 
-                    <span class="cardTag bg-purple">Bootstap 4</span>
-                  </p>
-                  <div class="mt-5 d-flex justify-content-center">
-                    <span class="project-btn rounded-pill">
-                      <a class="text-dark text-decoration-none" target="blank" href="https://learn-py.netlify.com/">VISIT</a>
-                    </span> 
-                    <span class="project-btn rounded-pill">
-                      <a id="learnpy" class="text-dark text-decoration-none open-modal-btn" href="#">MORE</a>
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-12">
-              <p class="text-center font-12 m-0"><strong>Learn.py</strong></p>
-              <p class="text-center">Website for selling python courses.</p>
-            </div>
-          </div>
-          <!--SINGLE PROJECT END-->
         </div>
       </div>
-    </section>
-    <!-- PROJECTS END -->
+      <?php endfor ?>
+    </div>
+
+  </section>    
 
     <?php include("include/footer.php"); ?>
 
