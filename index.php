@@ -1,6 +1,26 @@
 <?php 
   include("include/connection.php"); 
   include("include/getlogo.php");
+
+  $sql = "SELECT Name FROM skillsection";
+  $stmt = $pdo->prepare($sql);
+  $stmt->execute();
+  $skillSectionsNames = $stmt->fetchAll();
+
+  $arrSkills = [];
+  for($i = 0; $i < count($skillSectionsNames); $i++){
+
+    $name = $skillSectionsNames[$i]["Name"];
+
+    $sql = "SELECT s.Name, ss.name, ss.icon FROM skillsection ss INNER JOIN skills s ON ss.id = s.SkillSectionId WHERE ss.name = :name";
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindParam(":name", $name);
+    $stmt->execute();
+    $allData = $stmt->fetchAll();
+    $arrSkills[$i] = $allData;
+
+  }
+
 ?>
 
 <!DOCTYPE html>
@@ -91,34 +111,18 @@
           <div class="col-12">
             <h2 class="text-center mont m-5"><strong>SKILLS</strong></h2>
           </div>
+          <?php for($i = 0; $i < count($arrSkills); $i++): ?>
           <div id="skill-card" class="mt-3 p-3 border d-flex justify-content-center flex-column align-items-center">
-            <i id="skill-icon" class="fas fa-desktop"></i>
-            <h3><strong class="mont">FRONTEND</strong></h3>
-            <p>HTML5</p>
-            <p>CSS3 | SASS</p>
-            <p>Javascript | Jquery </p>
+            <?php foreach($arrSkills[$i] as $x ): ?>
+            <i id="skill-icon" class="fas <?=$x["icon"]?>"></i>
+            <h3><strong class="mont"><?=$x["name"]?></strong></h3>
+            <?php break; ?>
+            <?php endforeach ?>
+            <?php foreach($arrSkills[$i] as $x ): ?>
+              <p><?=$x["Name"]?></p>
+            <?php endforeach ?>
           </div>
-          <div id="skill-card" class="mt-3 p-3 border d-flex justify-content-center flex-column align-items-center">
-            <i id="skill-icon" class="fas fa-server"></i>
-            <h3><strong class="mont">BACKEND</strong></h3>
-            <p>Python 3.7 | Django </p>
-            <p>PHP 7</p>
-            <p>C#</p>
-          </div>
-          <div id="skill-card" class="mt-3 p-3 border d-flex justify-content-center flex-column align-items-center">
-            <i id="skill-icon" class="fas fa-database"></i>
-            <h3 ><strong class="mont">DATABASE</strong></h3>
-            <p>MySQL</p>
-            <p>MS SQL</p>
-            <p>SQLite</p>
-          </div>
-          <div id="skill-card" class="mt-3 p-3 border d-flex justify-content-center flex-column align-items-center">
-            <i id="skill-icon" class="fas fa-cloud"></i>
-            <h3 ><strong class="mont">DEPLOYMENT</strong></h3>
-            <p>AWS S3</p>
-            <p>Git</p>
-            <p>Linux server</p>
-          </div>
+          <?php endfor ?>
         </div>
       </div>
     </section>
