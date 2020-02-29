@@ -102,7 +102,6 @@ html {
 }
 #skill-card{
     width: 250px;
-    border: 1px solid black !important;
     margin: 1.5%;
     transition: all .2s ease-in-out;
     box-shadow: 5px 5px 5px 0px rgba(161,158,161,1);
