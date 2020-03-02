@@ -44,24 +44,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
-
-  <title>Admin Dashboard</title>
-
-  <!-- Custom fonts for this template-->
-  <script src="https://kit.fontawesome.com/d27711fee5.js"></script>
-  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
-
-  <!-- Custom styles for this template-->
-  <link href="../css/sb-admin-2.min.css" rel="stylesheet">
-
-</head>
+<?php include("includes/head.php"); ?>
 
 <body id="page-top">
 
@@ -117,17 +100,17 @@
                       <?php for($y = 0; $y < count($tableInfo[$i]) / 2; $y++): ?>
                       <td><?= $tableInfo[$i][$y] ?></td>
                       <?php endfor ?>
-                      <td><button class="btn btn-warning">Edit</button></td>
-                      <td><button class="btn btn-danger">Delete</button></td>
+                      <td><a href='editrow.php?row=<?=$i?>&table=<?=$table?>' class="btn btn-warning">Edit</a></td>
+                      <td><a href='deleterow.php?row=<?=$i?>&table=<?=$table?>' class="btn btn-danger">Delete</a></td>
                     </tr>
                     <?php endfor ?>
                   </tbody>
-              </table>
+                </table>
+              </div>
+              <div class="col-12">
+                  <a href='createrow.php?table=<?=$table?>' class="btn btn-success">Create</a>
+              </div>
             </div>
-            <div class="col-12">
-                <button class="btn btn-success">Create</button>
-            </div>
-        </div>
     </div>
             
 </div>
