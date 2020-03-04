@@ -91,8 +91,6 @@
 
     }
 
-    #var_dump($allNamesAndIdsFromFks);
-
     //inserting only elements that are string in array
     $wordKeys = [];
     $keyonly = array_keys($allColumns[0]);
@@ -167,7 +165,7 @@
             <?php endfor ?>
             </div>
 
-            <input type="hidden" name="table" value="<?= $table ?>"/>
+            <input type="hidden" name="createtable" value="<?= $table ?>"/>
 
             <div class="col-12 m-3">
               <button class="btn btn-success" type="submit">Create</button>
