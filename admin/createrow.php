@@ -10,18 +10,20 @@
     $db = "portfolio";
     $table = $_GET["table"];
     
+    try{
+      $sql = "SELECT * FROM ".$table;
+      $stmt = $pdo->prepare($sql);
+      $stmt->execute();
+      $allColumns = $stmt->fetchAll();
+    }catch(Exception $e){
+      header("location: dashboard.php");
+    }
 
-    $sql = "SELECT * FROM ".$table;
-    $stmt = $pdo->prepare($sql);
-    $stmt->execute();
-    $allColumns = $stmt->fetchAll();
-
-/*
+    /*
     if(count($allColumns) == 0){
         header("location: dashboard.php");
     }*/
 
-    #var_dump($allColumns[0]);
 
     $sql = "SHOW INDEXES FROM ".$table;
     $stmt = $pdo->prepare($sql);
@@ -99,7 +101,6 @@
         array_push($wordKeys, $ko); 
       }
     }
-     
     #$sql = "SELECT * FROM information_schema.TABLE_CONSTRAINTS WHERE information_schema.TABLE_CONSTRAINTS.CONSTRAINT_TYPE = 'FOREIGN KEY' AND information_schema.TABLE_CONSTRAINTS.TABLE_SCHEMA = :db AND information_schema.TABLE_CONSTRAINTS.TABLE_NAME = :table";
   }
 
@@ -131,42 +132,48 @@
           </div>
 
           <div class="row">
-          <?php for($i = 0; $i < count($allColumns[0]) / 2; $i++): ?>
-            <?php $skipText = false; ?>
-            <?php if($hasFk): ?>
-              <?php for($y = 0; $y < count($onlyFk); $y++): ?>
-                <?php if($wordKeys[$i] == $onlyFk[$y]): ?>
-                  <?php $skipText = true; ?>
-                  <label><?= $wordKeys[$i] ?></label>
-                  <select name="<?= $wordKeys[$i] ?>" class="form-control">
 
-                    <?php for($z = 0; $z < count($allNamesAndIdsFromFks[$y]); $z++): ?>
-                      <option value="<?= $allNamesAndIdsFromFks[$y][$z]["id"] ?>"> <?= $allNamesAndIdsFromFks[$y][$z]["name"] ?> </option>
-                    <?php endfor ?>
-
-                  </select>
-                <?php endif ?>
-              <?php endfor ?>
-            <?php endif ?>
-            
-            <?php if(!$skipText): ?>
-              <?php if($wordKeys[$i] != "Id" && $wordKeys[$i] != "id"): ?>
-                <label><?= $wordKeys[$i] ?></label>
-                <input type="text" class="form-control" name="<?= $wordKeys[$i] ?>">
-              <?php endif ?>
-            <?php endif ?>
-
-          <?php endfor ?>
-          
-          <!--<label>Choose</label>
-          <select class="form-control" id="exampleFormControlSelect1">
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
-          </select>-->
+          <div class="col-12 m-3">
+            <h1><?= strtoupper($table) ?></h1>
           </div>
+
+          <form method="post" action="rowprocessing.php" class="w-100">
+            
+            <?php for($i = 0; $i < count($allColumns[0]) / 2; $i++): ?>
+              <?php $skipText = false; ?>
+              <?php if($hasFk): ?>
+                <?php for($y = 0; $y < count($onlyFk); $y++): ?>
+                  <?php if($wordKeys[$i] == $onlyFk[$y]): ?>
+                    <?php $skipText = true; ?>
+                    <label><?= $wordKeys[$i] ?></label>
+                    <select name="<?= $wordKeys[$i] ?>" class="form-control">
+
+                      <?php for($z = 0; $z < count($allNamesAndIdsFromFks[$y]); $z++): ?>
+                        <option value="<?= $allNamesAndIdsFromFks[$y][$z]["id"] ?>"> <?= $allNamesAndIdsFromFks[$y][$z]["name"] ?> </option>
+                      <?php endfor ?>
+
+                    </select>
+                  <?php endif ?>
+                <?php endfor ?>
+              <?php endif ?>
+              
+              <?php if(!$skipText): ?>
+                <?php if($wordKeys[$i] != "Id" && $wordKeys[$i] != "id"): ?>
+                  <label><?= $wordKeys[$i] ?></label>
+                  <input type="text" class="form-control" name="<?= $wordKeys[$i] ?>">
+                <?php endif ?>
+              <?php endif ?>
+
+            <?php endfor ?>
+            </div>
+
+            <input type="hidden" name="table" value="<?= $table ?>"/>
+
+            <div class="col-12 m-3">
+              <button class="btn btn-success" type="submit">Create</button>
+            </div>
+
+          </form>
             
         </div>
 
