@@ -18,7 +18,7 @@
 
         include("includes/gettable.php");
 
-        include("includes/showtable.php");
+        echo json_encode($tableInfo);
     }
 
 ?>
