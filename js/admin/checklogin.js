@@ -20,14 +20,15 @@ $(document).ready(function(){
         }
 
         $(".errors").html("");
+        $(".server-erros").html("");
         if(!isValidEmail || !isValidPsw){
 
             if(!isValidEmail){
-                $(".errors").append("<p class='text-danger'>Email is in wrong format.</p>");
+                $(".errors").append("<p class='text-danger text-center'>Email is in wrong format.</p>");
             }
 
             if(!isValidPsw){
-                $(".errors").append("<p class='text-danger'>Password is invalid. </p>");
+                $(".errors").append("<p class='text-danger text-center'>Password is invalid. </p>");
             }
             
             return false;

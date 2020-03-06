@@ -17,5 +17,8 @@
 
         echo json_encode($tableInfo);
     }
+    else{
+        header("location: dashboard.php");
+    }
 
 ?>

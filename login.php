@@ -9,75 +9,79 @@
     }
   }
   
+  unset($_SESSION["message"]);
 
   if($_SERVER["REQUEST_METHOD"] == "POST"){
     
-    var_dump($_POST["email"]);
-    var_dump($_POST["password"]);
-    
     if(isset($_POST["email"]) && isset($_POST["password"]) && !empty($_POST["email"]) && !empty($_POST["password"])){
-      
+
       $email = test_input($_POST["email"]);
       $password = test_input($_POST["password"]);
       $isEmailValid = preg_match('/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/', $email);
       
-      if($isEmailValid && strlen($password) > 0 && strlen($password) < 25){
-        echo("email and password are in valid format, ");
+      if($isEmailValid){
 
-        include("include/connection.php");
+        if(strlen($password) > 0 && strlen($password) < 25){
 
-        $sql = "SELECT id, username, password, role FROM users WHERE email = :email";
-        
-        if($stmt = $pdo->prepare($sql)){
-          $stmt->bindParam(":email", $email);
-          $stmt->execute();
-          if($stmt->rowCount() == 1){
-            $users = $stmt->fetchAll();
-            if(password_verify($password, $users[0]["password"])){
-              echo("Correct username and password");
-              
-              session_start();
+          include("include/connection.php");
 
-              // Store data in session variables
-              $_SESSION["role"] = $users[0]["role"];
-              $_SESSION["username"] = $users[0]["username"];                            
-                    
-              // Redirect depends on role
-              if($users[0]["role"] == 1){
-                header("location: admin/dashboard.php");
+          $sql = "SELECT id, username, password, role FROM users WHERE email = :email";
+          
+          if($stmt = $pdo->prepare($sql)){
+            $stmt->bindParam(":email", $email);
+            $stmt->execute();
+            if($stmt->rowCount() == 1){
+              $users = $stmt->fetchAll();
+              if(password_verify($password, $users[0]["password"])){
+                
+                session_start();
+
+                // Store data in session variables
+                $_SESSION["role"] = $users[0]["role"];
+                $_SESSION["username"] = $users[0]["username"];                            
+                      
+                // Redirect depends on role
+                if($users[0]["role"] == 1){
+                  header("location: admin/dashboard.php");
+                }
+                else{
+                  header("location: index.php");
+                }
+                
               }
               else{
-                header("location: index.php");
+                $_SESSION["message"] = "Password is invalid.";
               }
-              
             }
             else{
-              echo("Invalid password");
-              die();
+              $_SESSION["message"] = "Email doesn't exist.";
             }
           }
-          else{
-            echo("that email doesnt exist");
-            die();
-          }
+        }
+        else{
+          $_SESSION["message"] = "Password is maximum 25 characters.";
         }
 
       }
       else{
-        echo("email or password are not valid");
-        die();
+        $_SESSION["message"] = "Email is in wrong format.";
       }
-    } 
-    else{
-      echo("Email or password are not set!");
-      die();
     }
+    else{
+      $_SESSION["message"] = "Email or password are not inserted.";
+    }
+  }
+
+  if(isset($_SESSION["message"]) && !empty($_SESSION["message"])){
+    $currentMessage = $_SESSION["message"];
+  }
+  else{
+    $currentMessage = null;
   }
 
   function test_input($data) {
     $data = trim($data);
     $data = stripslashes($data);
-    $data = htmlspecialchars($data);
     return $data;
   }
 
@@ -140,6 +144,9 @@
                     </button>
                   </form>
                   <div class="errors mt-3"></div>
+                  <div class="col-12">
+                    <p class="server-erros text-center text-danger text-center"> <?= $currentMessage ?></p>
+                  </div>
                 </div>
               </div>
             </div>

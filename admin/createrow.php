@@ -15,10 +15,9 @@
       header("location: dashboard.php");
     }
 
-    /*
     if(count($allColumns) == 0){
         header("location: dashboard.php");
-    }*/
+    }
 
 
     $sql = "SHOW INDEXES FROM ".$table;
@@ -96,6 +95,9 @@
       }
     }
     #$sql = "SELECT * FROM information_schema.TABLE_CONSTRAINTS WHERE information_schema.TABLE_CONSTRAINTS.CONSTRAINT_TYPE = 'FOREIGN KEY' AND information_schema.TABLE_CONSTRAINTS.TABLE_SCHEMA = :db AND information_schema.TABLE_CONSTRAINTS.TABLE_NAME = :table";
+  }
+  else{
+    header("location: dashboard.php");
   }
 
 ?>

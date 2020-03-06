@@ -17,6 +17,10 @@
       header("location: dashboard.php");
     }
 
+    if(count($allColumns) == 0){
+      header("location: dashboard.php");
+    }
+
     $sql = "SHOW INDEXES FROM ".$table;
     $stmt = $pdo->prepare($sql);
     $stmt->execute();
@@ -92,6 +96,9 @@
       }
     }
 
+  }
+  else{
+    header("location: dashboard.php");
   }
 
 ?>
