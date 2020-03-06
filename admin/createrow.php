@@ -1,10 +1,6 @@
 <?php
-  session_start();
-  if($_SESSION["role"] != "1"){
-    header("location: login.php");
-  }
-
   include("../include/connection.php");
+  include("includes/checkuserrole.php");
 
   if(isset($_GET["table"])){
     $db = "portfolio";

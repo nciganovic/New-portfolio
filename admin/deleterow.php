@@ -1,8 +1,5 @@
 <?php 
-    session_start();
-    if($_SESSION["role"] != "1"){
-      header("location: login.php");
-    }
+    include("includes/checkuserrole.php");
 
     include("../include/connection.php");
 

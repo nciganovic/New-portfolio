@@ -1,6 +1,7 @@
 <?php
 
 include("../include/connection.php");
+include("includes/checkuserrole.php");
 
 if(isset($_POST["edittable"]) && isset($_POST["editid"])){
     $table = $_POST["edittable"];
