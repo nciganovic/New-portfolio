@@ -140,11 +140,6 @@ $(document).ready(function(){
         `)
 
         $('.souce-btn').attr('href', item.src);
-        
-        //<video autoplay controls loop muted id="video" class="w-100 border">
-        //<source src="video/${item.img}" type="video/mp4">
-        //</video>
-
     }
 
     $('#clothyy').click(function(){

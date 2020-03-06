@@ -149,39 +149,75 @@
       </div>
     </section>
     <!-- MY SKILLS END -->
-
-  <section class="section-projects" id="projects">
-    <div class="container">
-      <h2 class="text-center mont m-5">PROJECTS</h2>
-    </div>
-    <div class="container">
-      <!-- First Featured Project -->
-      <?php for($i = 0; $i < count($allProjects); $i++): ?>
-      <div class="row project-holder mt-5">
-        <div class="col-lg-6 aos-init aos-animate" data-aos="fade-up-right" data-aos-duration="1000">
-          <a href="#" target="_blank">
-            <img src="img/<?=$allProjects[$i]["imgsrc"]?>" alt="Portfolio Website" class="img-fluid">
-          </a>
-        </div>
-        <div class="col-lg-6 aos-init aos-animate" data-aos="fade-up-left" data-aos-duration="1000">
-          <h4><?=$allProjects[$i]["title"]?></h4>
-          <p><?=$allProjects[$i]["description"]?></p>
-          <div class="tech-used-list">
-            <?php foreach($arrProjSkills[$i] as $ps): ?>
-            <div><?= $ps[0] ?></div>
-            <?php endforeach ?>
-          </div>
-          <div class="external-link">
-            <a href="<?=$allProjects[$i]["weburl"]?>" class="btn btn-full">Visit website</a>
-            <a href="<?=$allProjects[$i]["giturl"]?>" class="btn btn-full">Source code</a>
-            <a id="<?=$allProjects[$i]["demoid"]?>" href="#" class="btn btn-full open-modal-btn">Demo</a>
-          </div>
-        </div>
+    
+    <!-- PROJECTS START -->
+    <section class="section-projects" id="projects">
+      <div class="container">
+        <h2 class="text-center mont m-5">PROJECTS</h2>
       </div>
-      <?php endfor ?>
-    </div>
+      <div class="container">
+        <!-- First Featured Project -->
+        <?php for($i = 0; $i < count($allProjects); $i++): ?>
+        <div class="row project-holder mt-5">
+          <div class="col-lg-6 aos-init aos-animate" data-aos="fade-up-right" data-aos-duration="1000">
+            <a href="#" target="_blank">
+              <img src="img/<?=$allProjects[$i]["imgsrc"]?>" alt="Portfolio Website" class="img-fluid">
+            </a>
+          </div>
+          <div class="col-lg-6 aos-init aos-animate" data-aos="fade-up-left" data-aos-duration="1000">
+            <h4><?=$allProjects[$i]["title"]?></h4>
+            <p><?=$allProjects[$i]["description"]?></p>
+            <div class="tech-used-list">
+              <?php foreach($arrProjSkills[$i] as $ps): ?>
+              <div><?= $ps[0] ?></div>
+              <?php endforeach ?>
+            </div>
+            <div class="external-link">
+              <a href="<?=$allProjects[$i]["weburl"]?>" class="btn btn-full">Visit website</a>
+              <a href="<?=$allProjects[$i]["giturl"]?>" class="btn btn-full">Source code</a>
+              <a id="<?=$allProjects[$i]["demoid"]?>" href="#" class="btn btn-full open-modal-btn">Demo</a>
+            </div>
+          </div>
+        </div>
+        <?php endfor ?>
+      </div>
 
-  </section>    
+    </section>    
+    <!-- PROJECTS END -->
+
+    <!-- CONTACT ME START -->
+    <section id="contact">
+      <div class="container mt-5">
+        <div class="row">
+          <div class="col-12">
+            <h2 class="text-center mont">CONTACT</h2>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-6 mt-3">
+            <input type="text" class="form-control" name="Name" placeholder="First name">
+          </div>
+          <div class="col-6 mt-3">
+            <input type="text" class="form-control" name="Email" placeholder="Email">
+          </div>
+          <div class="col-12 mt-3">
+            <input type="text" class="form-control" name="Subject" placeholder="Subject">
+          </div>
+          <div class="col-12 mt-3">
+            <textarea class="form-control w-100" name="Message" placeholder="Message"></textarea>
+          </div>
+        </div>
+        <div class="col-12 mt-3 pl-0">
+          <button type="button" class="btn btn-success send-email">Send Email</button>
+        </div>   
+        <div class="col-12 mt-3 form-errors">
+          
+        </div>      
+      </div>
+    </section>
+    
+    <!-- CONTACT ME END -->
+
 
     <?php include("include/footer.php"); ?>
 
@@ -223,5 +259,6 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <script src="js/main.js"></script>
+    <script src="js/email.js"></script>
 </body>
 </html>
