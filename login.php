@@ -25,7 +25,7 @@
 
         if(strlen($password) > 0 && strlen($password) < 25){
 
-          $sql = "SELECT id, username, password, role FROM users WHERE email = :email";
+          $sql = "SELECT id, username, password, role FROM users WHERE email = :email AND isverified=1";
           
           if($stmt = $pdo->prepare($sql)){
             $stmt->bindParam(":email", $email);

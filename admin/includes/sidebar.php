@@ -22,7 +22,7 @@
 <!-- Divider -->
 <hr class="sidebar-divider">
 <li class="nav-item">
-  <a class="nav-link" href="logout.php">
+  <a class="nav-link" href="<?php echo("https://".$_SERVER["HTTP_HOST"]."/newportfolio/logout.php")?>">
     <i class="fas fa-fw fa-table"></i>
     <span>Logout</span></a>
 </li>

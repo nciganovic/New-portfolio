@@ -14,11 +14,24 @@
         
         <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
             <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
-                <?php foreach($data as $d): ?>
-                <li class="nav-item active ml-2 mr-2">
-                    <a class="nav-link text-light font-weight-bold mont" href="<?=$d["Src"]?>"><?=$d["Name"]?> <span class="sr-only">(current)</span></a>
-                </li>   
-                <?php endforeach ?>
+                <?php if(isset($_SESSION["role"])): ?> 
+                    <?php foreach($data as $d): ?>
+                        <?php if($d["Name"] != "Login" && $d["Name"] != "Register"): ?>
+                        <li class="nav-item active ml-2 mr-2">
+                            <a class="nav-link text-light font-weight-bold mont" href="<?=$d["Src"]?>"><?=$d["Name"]?> <span class="sr-only">(current)</span></a>
+                        </li>   
+                        <?php endif ?>
+                    <?php endforeach ?>
+                    <li class="nav-item active ml-2 mr-2">
+                        <a class="nav-link text-light font-weight-bold mont" href="logout.php"> Logout <span class="sr-only">(current)</span></a>
+                    </li>
+                <?php else: ?>
+                    <?php foreach($data as $d): ?>
+                    <li class="nav-item active ml-2 mr-2">
+                        <a class="nav-link text-light font-weight-bold mont" href="<?=$d["Src"]?>"><?=$d["Name"]?> <span class="sr-only">(current)</span></a>
+                    </li>
+                    <?php endforeach ?>
+                <?php endif ?>
             </ul>
         </div>
     </div>
