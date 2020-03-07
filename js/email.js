@@ -26,7 +26,7 @@ $(document).ready(function(){
         /* check subject */
         var subject = $("[name='Subject']").val();
         console.log(subject);
-        var regSubject = /^[a-zA-Z0-9_.-\s]+$/;
+        var regSubject = /^[a-zA-Z0-9_\.\-\!\?\*\,\:\s]+$/;
         var isSpecCharFound = regSubject.test(subject);
         console.log('Subject', subject, 'is', isSpecCharFound);
         console.log(subject.length)
@@ -37,7 +37,7 @@ $(document).ready(function(){
 
         /* check message */ 
         var message = $("[name='Message']").val();
-        var regMessage = /^[a-zA-Z0-9_.-\s]+$/;
+        var regMessage = /^[a-zA-Z0-9_\.\-\!\?\*\,\:\s]+$/;
         var isSpecCharFound2 = regMessage.test(message);
         
         if(!isSpecCharFound2 || message.length < 20 || message.length > 300){
@@ -81,10 +81,10 @@ $(document).ready(function(){
                     $(".form-errors").append("<p class='text-danger'>Email is not in the right format.</p>");
                 }
                 if(element == 'subject'){
-                    $(".form-errors").append("<p class='text-danger'>Subject needs to be between 5 and 50 characters long, also special characters like #$%&/()'<>;: are not allowed.</p>");
+                    $(".form-errors").append("<p class='text-danger'>Subject needs to be between 5 and 50 characters long, also special characters like #$%&/()'<>; are not allowed.</p>");
                 }
                 if(element == 'message'){
-                    $(".form-errors").append("<p class='text-danger'>Message needs to be between 20 and 300 characters long, also special characters like #$%&/()'<>;: are not allowed.</p>");
+                    $(".form-errors").append("<p class='text-danger'>Message needs to be between 20 and 300 characters long, also special characters like #$%&/()'<>; are not allowed.</p>");
                 }
             });
         }

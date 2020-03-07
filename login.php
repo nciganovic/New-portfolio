@@ -8,6 +8,8 @@
       header("location: admin/dashboard.php");
     }
   }
+
+  include("include/connection.php");
   
   unset($_SESSION["message"]);
 
@@ -22,8 +24,6 @@
       if($isEmailValid){
 
         if(strlen($password) > 0 && strlen($password) < 25){
-
-          include("include/connection.php");
 
           $sql = "SELECT id, username, password, role FROM users WHERE email = :email";
           
@@ -110,7 +110,9 @@
 
 <body class="bg-gradient-primary">
 
-  <div class="container">
+  <?php include("include/navbar.php"); ?>
+
+  <div class="container mt-5">
 
     <!-- Outer Row -->
     <div class="row justify-content-center">
@@ -159,7 +161,7 @@
 
   </div>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="js/admin/checklogin.js"></script>
+  <script src="js/checklogin.js"></script>
 
 </body>
 
