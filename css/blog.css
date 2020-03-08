@@ -1,0 +1,70 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Open Sans', sans-serif;
+}
+html {
+    scroll-behavior: smooth;
+  }
+.raleway-h1{
+    font-family: 'Raleway', sans-serif;
+    font-weight: 900;
+}
+.raleway-p{
+    font-family: 'Raleway', sans-serif;
+    font-weight: 400;
+}
+.mont{
+    font-family: 'Montserrat', sans-serif;
+}
+.transp-nav{
+    background-color: transparent !important;
+    transition: 0.2s ease-in-out;
+}
+.dark-nav{
+    background-color: #322e2f;
+    transition: 0.2s ease-in-out;
+}
+.dark-bg{
+    background-color: #322e2f;
+}
+#nav-get-started:hover{
+    background-color: rgb(54, 158, 243);
+    color: black !important;
+}
+.h-540{
+    height: 400px;
+}
+.font-12{
+    font-size: 1.2rem;
+}
+.font-25{
+    font-size: 2.5rem;
+}
+.font-15{
+    font-size: 1.5rem;
+}
+.font-08{
+    font-size: 0.8rem;
+}
+.h1{
+    font-size: 2.5rem;
+}
+/* Intro page */
+#intro-page{
+    background-image: url('../img/bgblog.png');
+    height: 400px; 
+    background-position: center; 
+    background-repeat: no-repeat; 
+    background-size: cover;
+}
+.darker-bg{
+    background-color: rgba(0, 0, 0, 0.726);
+}
+.pos-rel{
+    position: relative;
+}
+/* Blog */
+ul li{
+    list-style: none;
+}

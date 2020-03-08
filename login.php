@@ -37,6 +37,7 @@
                 session_start();
 
                 // Store data in session variables
+                $_SESSION["userid"] = $users[0]["id"];
                 $_SESSION["role"] = $users[0]["role"];
                 $_SESSION["username"] = $users[0]["username"];                            
                       
