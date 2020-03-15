@@ -164,7 +164,13 @@
               <?php if(!$skipText): ?>
                 <?php if($wordKeys[$i] != "Id" && $wordKeys[$i] != "id"): ?>
                   <label><?= $wordKeys[$i] ?></label>
-                  <input type="text" class="form-control" name="<?= $wordKeys[$i] ?>" value="<?= $allColumns[0][$wordKeys[$i]] ?>">
+                  <?php if($wordKeys[$i] == "text"): ?>
+                    <textarea id="mytextarea" class="form-control" name="<?= $wordKeys[$i] ?>"><?= $allColumns[0][$wordKeys[$i]]?></textarea>
+                  <?php else: ?>
+                    <input type="text" class="form-control" name="<?= $wordKeys[$i] ?>" value="<?= $allColumns[0][$wordKeys[$i]] ?>">
+                  <?php endif ?>
+                  
+                  
                 <?php endif ?>
               <?php endif ?>
 
@@ -192,7 +198,6 @@
 
   <!-- Bootstrap core JavaScript-->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-
 </body>
 
 </html>

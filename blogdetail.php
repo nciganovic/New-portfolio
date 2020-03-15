@@ -3,35 +3,19 @@
     include("include/getlogo.php");
     session_start();
 
-    if(isset($_SESSION["userid"])){
-        $id = $_SESSION["userid"];
-        
-       include("include/getqa.php");
+    if(isset($_GET["id"]) && !empty($_GET["id"])){
+        $id = $_GET["id"];
+        $sql = "SELECT b.id, b.title, b.description, b.text as 'text', b.bgimgsrc, b.date, c.name as 'ctgname' FROM blogs b inner join categories c on c.id = b.categoryid WHERE b.id = :id";
+        $stmt = $pdo->prepare($sql);
+        $stmt->bindParam(":id", $id);
+        $stmt->execute();
+        $blog = $stmt->fetchAll();
+        $blog = $blog[0];
     }
     else{
-        $sql = "SELECT id, name FROM question";
-        $stmt = $pdo->prepare($sql);
-        $stmt->execute();
-        $allQuestions = $stmt->fetchAll();
-
-        $allAnswers = []; 
-
-        foreach($allQuestions as $q){
-            $sql = "SELECT name FROM choice where questionid = :qid";
-            $stmt = $pdo->prepare($sql);
-            $stmt->bindParam(":qid", $q["id"]);
-            $stmt->execute();
-            $one_Q_answers = $stmt->fetchAll();
-
-            array_push($allAnswers, $one_Q_answers);
-        }
+        $url = "http://".$_SERVER["HTTP_HOST"]."/newportfolio/index.php";
+        header("location: ".$url);
     }
-    
-    //Get all blogs 
-    $sql = "SELECT b.id, b.title, b.description, b.bgimgsrc, b.date, c.name as 'ctgname' FROM blogs b inner join categories c on c.id = b.categoryid ORDER BY date DESC";
-    $stmt = $pdo->prepare($sql);
-    $stmt->execute();
-    $allBlogs = $stmt->fetchAll();
 ?>
 
 <!DOCTYPE html>
@@ -69,9 +53,8 @@
     <section id="blog">
         <div class="container">
             <div class="row">
-                <div class="col-8">
+                <div class="col-12">
                     <!-- Blogs -->
-                    <?php foreach($allBlogs as $blog): ?>
                     <div class="col-12 p-4 mt-4 mb-2 bg-white box-shadow">
                         <p class="p-3 text-center border-dashed color-gray"><?= strtoupper($blog["ctgname"]) ?></p>
                         <h2 class="text-center"><?= $blog["title"] ?></h2>
@@ -81,30 +64,10 @@
                         <div>
                             <img class="w-100" src="img/<?=$blog["bgimgsrc"] ?>" alt="Slika 1">
                         </div>
-                        <p class="mt-3"><?= $blog["description"] ?></p>
-                        <p class="text-center p-3"><a class="p-3 read-more-btn" href="blogdetail.php?id=<?= $blog["id"] ?>">READ MORE</a></p>
-                    </div>
-                    <?php endforeach ?>
-                </div>
-                <div class="col-4 pools mt-4" data="<?=$_SESSION["userid"]?>">
-                    <!-- Pools -->
-
-                    <?php for($i = 0; $i < count($allQuestions); $i++): ?>
-                    <div class="w-100 p-3 mb-3 bg-white box-shadow">
-                        <p><?= $allQuestions[$i]["name"] ?></p>
-                        <ul class="ml-5">
-                            <?php foreach($allAnswers[$i] as $a): ?>
-                            <li><input type="radio" name="<?= $allQuestions[$i]["id"] ?>" value="<?=$a["name"]?>"> <?=$a["name"]?> </li>
-                            <?php endforeach ?>
-                        </ul> 
+                        <div class="mt-3"><?=$blog["text"] ?></div>
                         
-                        <?php if(isset($_SESSION["userid"])): ?>
-                        <button class="btn btn-success ml-5 answer-btn" data="<?=$allQuestions[$i]["id"]?>">Answer</button> 
-                        <?php else: ?>
-                        <button class="btn btn-success ml-5 alert-btn">Answer</button> 
-                        <?php endif ?>
                     </div>
-                    <?php endfor ?>
+                    
                 </div>
             </div> 
         </div>

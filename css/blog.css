@@ -68,3 +68,28 @@ html {
 ul li{
     list-style: none;
 }
+.box-shadow{
+    box-shadow: 3px 3px 5px 0px rgba(166,159,166,1);
+}
+.bg-white{
+    background-color: white;
+}
+.read-more-btn{
+    background-color: #0394fc;
+    color: white;
+}
+.read-more-btn:hover{
+    background-color: #0394fc6e;
+    color: white;
+    text-decoration: none;
+}
+.color-gray{
+    color: gray
+}
+.border-dashed{
+    border-left: 0px;
+    border-right: 0px;
+    border-top: 0px;
+    border-bottom: 1px solid gray;
+    border-style:dashed;
+}

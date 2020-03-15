@@ -15,4 +15,12 @@
   <!-- Custom styles for this template-->
   <link href="../css/sb-admin-2.min.css" rel="stylesheet">
 
+  <script src='https://cdn.tiny.cloud/1/9r2x4xp8ocexz56i81o7x58284stpn2f6dcamn0rlhr7a3bh/tinymce/5/tinymce.min.js' referrerpolicy="origin">
+  </script>
+  <script>
+    tinymce.init({
+      selector: '#mytextarea'
+    });
+  </script>
+
 </head>

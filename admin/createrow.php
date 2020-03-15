@@ -156,7 +156,13 @@
               <?php if(!$skipText): ?>
                 <?php if($wordKeys[$i] != "Id" && $wordKeys[$i] != "id"): ?>
                   <label><?= $wordKeys[$i] ?></label>
-                  <input type="text" class="form-control" name="<?= $wordKeys[$i] ?>">
+                  <?php if($wordKeys[$i] == "text"): ?>
+                    <textarea id="mytextarea" name="<?= $wordKeys[$i] ?>" class="form-control"></textarea>
+                  <?php else: ?>
+                    <input type="text" class="form-control" name="<?= $wordKeys[$i] ?>">
+                  <?php endif ?>
+                  
+                  
                 <?php endif ?>
               <?php endif ?>
 
@@ -183,7 +189,16 @@
 
   <!-- Bootstrap core JavaScript-->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-
+  <script>
+    tinymce.init({
+      selector: 'textarea',
+      plugins: 'a11ychecker advcode casechange formatpainter linkchecker autolink lists checklist media mediaembed pageembed permanentpen powerpaste table advtable tinycomments tinymcespellchecker',
+      toolbar: 'a11ycheck addcomment showcomments casechange checklist code formatpainter pageembed permanentpen table',
+      toolbar_mode: 'floating',
+      tinycomments_mode: 'embedded',
+      tinycomments_author: 'Author name',
+    });
+  </script>
 </body>
 
 </html>
