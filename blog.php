@@ -28,10 +28,13 @@
     }
     
     //Get all blogs 
-    $sql = "SELECT b.id, b.title, b.description, b.bgimgsrc, b.date, c.name as 'ctgname' FROM blogs b inner join categories c on c.id = b.categoryid ORDER BY date DESC";
+    $offset = 0;
+
+    $sql = "SELECT b.id, b.title, b.description, b.bgimgsrc, b.date, c.name as 'ctgname' FROM blogs b inner join categories c on c.id = b.categoryid ORDER BY date DESC  LIMIT 3";
     $stmt = $pdo->prepare($sql);
     $stmt->execute();
     $allBlogs = $stmt->fetchAll();
+
 ?>
 
 <!DOCTYPE html>
@@ -69,7 +72,7 @@
     <section id="blog">
         <div class="container">
             <div class="row">
-                <div class="col-8">
+                <div class="col-8 all-blogs">
                     <!-- Blogs -->
                     <?php foreach($allBlogs as $blog): ?>
                     <div class="col-12 p-4 mt-4 mb-2 bg-white box-shadow">
@@ -85,6 +88,15 @@
                         <p class="text-center p-3"><a class="p-3 read-more-btn" href="blogdetail.php?id=<?= $blog["id"] ?>">READ MORE</a></p>
                     </div>
                     <?php endforeach ?>
+                    
+                    <div class="show-new-blogs">
+                    </div>
+                    
+                    <div class="click-new-blogs">
+                        <p class="w-100 text-center m-0 mt-5"><a class="text-dark loadblog" href="#" data="<?= $GLOBALS["offset"] ?>">More blogs</a></p>
+                        <div class="w-100 d-flex "><a href="#" data="<?= $GLOBALS["offset"] ?>" class="m-auto loadblog"><i class="fas fa-chevron-down"></i></a></div>
+                    </div>
+                    
                 </div>
                 <div class="col-4 pools mt-4" data="<?=$_SESSION["userid"]?>">
                     <!-- Pools -->
@@ -118,5 +130,6 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <script src="js/main.js"></script>
     <script src="js/pool.js"></script>
+    <script src="js/moreblogs.js"></script>
 </body>
 </html>
