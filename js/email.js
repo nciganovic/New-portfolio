@@ -58,7 +58,7 @@ $(document).ready(function(){
                     message: message
                 },
                 success: function(data){
-
+                    console.log(data);
                 },
                 error: function(err){
                     console.log(err);

@@ -36,16 +36,24 @@
 
     if(count($errors) == 0){
         include("include/connection.php"); 
-        mail("nciganovic99@gmail.com", $subject, $message, $headers);
-        $sql = "INSERT INTO CONTACT (name, email, subject, message)  VALUES(:name, :email, :subject, :message)";
-        $stmt = $pdo->prepare($sql);
-        
-        $stmt->bindParam(":name", $name);
-        $stmt->bindParam(":email", $email);
-        $stmt->bindParam(":subject", $subject);
-        $stmt->bindParam(":message", $message);
+        try{
+            mail("nciganovic99@gmail.com", $subject, $message, $headers);
+            $sql = "INSERT INTO CONTACT (name, email, subject, message)  VALUES(:name, :email, :subject, :message)";
+            $stmt = $pdo->prepare($sql);
+            
+            $stmt->bindParam(":name", $name);
+            $stmt->bindParam(":email", $email);
+            $stmt->bindParam(":subject", $subject);
+            $stmt->bindParam(":message", $message);
+            $stmt->execute();
+            http_response_code(200);
+            echo("Email sent succesfully!");
+        }
+        catch(Exception $e){
+            http_response_code(400);
+            echo($e);
 
-        $stmt->execute();
+        }
 
     }
     else{

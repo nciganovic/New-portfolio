@@ -15,7 +15,7 @@ $(document).ready(function(){
                 "offset": offset
             },
             success: function(data){
-                console.log(JSON.parse(data));
+                console.log(data);
                 var data = JSON.parse(data)
                 if(data.length == 0){
                     console.log("No new blogs!");
