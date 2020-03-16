@@ -1,2 +1,6 @@
 User-agent:*
-Disallow:
+Disallow: /admin/
+Disallow: answer.php
+Disallow: auth.php
+Disallow: logout.php
+Disallow: sendemails.php
