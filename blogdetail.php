@@ -5,7 +5,7 @@
 
     if(isset($_GET["id"]) && !empty($_GET["id"])){
         $id = $_GET["id"];
-        $sql = "SELECT b.id, b.title, b.description, b.text as 'text', b.bgimgsrc, b.date, c.name as 'ctgname' FROM blogs b inner join categories c on c.id = b.categoryid WHERE b.id = :id";
+        $sql = "SELECT b.id, b.title, b.description, b.text as 'text', b.bgimgsrc, b.date, c.name as 'ctgname', b.keywords as 'keywords' FROM blogs b inner join categories c on c.id = b.categoryid WHERE b.id = :id";
         $stmt = $pdo->prepare($sql);
         $stmt->bindParam(":id", $id);
         $stmt->execute();
@@ -23,10 +23,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="<?=$blog["description"]?>">
+    <meta name="keywords" content="<?=$blog["keywords"]?>">
     <title>Blog</title>
 
     <script src="https://kit.fontawesome.com/d27711fee5.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Montserrat|Open+Sans|Raleway:400,900&display=swap" rel="stylesheet">
+    
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="css/blog.css">
