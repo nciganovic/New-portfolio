@@ -234,3 +234,21 @@ footer{
     margin-top: auto;
     margin-bottom: auto;
 }
+/* Blog */
+.card{
+    transition: all .2s ease-in-out;
+    color: black;
+    box-shadow: 5px 5px 5px 0px rgba(161,158,161,1);
+}
+.card h3{
+    color: black;
+    font-size: 1.2rem;
+}
+.card p{
+    color: black;
+    font-size: 1rem;
+}
+.card:hover{
+    transform: scale(1.1);
+    text-decoration: none;
+}

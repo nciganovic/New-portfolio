@@ -41,7 +41,7 @@ $(document).ready(function(){
 function showQuestionsAndAnswers(questions, answers){
     var html = ""; 
     for(let i = 0; i < questions.length; i++){
-        html += `   <div class="w-100 p-3">
+        html += `   <div class="w-100 p-3 mb-3 bg-white box-shadow">
                         <p>${questions[i].name}</p>
                         <ul class="ml-5">`
         

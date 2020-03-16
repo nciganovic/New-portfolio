@@ -42,6 +42,12 @@
 
   }
 
+  /* Select Top 3 Blogs */
+  $sql = "SELECT b.id, b.title, b.description, b.bgimgsrc, b.date, c.name as 'ctgname' FROM blogs b inner join categories c on c.id = b.categoryid ORDER BY date DESC  LIMIT 3";
+  $stmt = $pdo->prepare($sql);
+  $stmt->execute();
+  $allBlogs = $stmt->fetchAll();
+
   session_start();
 
 ?>
@@ -219,6 +225,31 @@
     </section>
     
     <!-- CONTACT ME END -->
+
+    <!-- BLOGS START -->
+    <section id="contact">
+      <div class="container mt-5">
+        <div class="col-12">
+          <h2 class="text-center mont">BLOGS</h2>
+        </div>
+        <div class="card-deck mt-5">
+          <?php foreach($allBlogs as $blog): ?>
+          <a href="blogdetail.php?id=<?=$blog["id"]?>" class="card">
+            <img class="card-img-top" src="img/<?=$blog["bgimgsrc"]?>" alt="<?=$blog["title"]?>">
+            <div class="card-body">
+              <h3 class="card-title"><?=$blog["title"]?></h3>
+              <p class="card-text"><?=$blog["description"]?></p>
+              <p class="card-text"><small class="text-muted"><?= date("d-M-Y", strtotime($blog["date"]));  ?></small></p>
+            </div>
+            <div class="card-footer">
+              <small class="text-muted"><?=$blog["ctgname"]?></small>
+            </div>
+          </a>
+          <?php endforeach ?>
+        </div>
+      </div>
+    </section>
+    <!-- BLOG END -->
 
 
     <?php include("include/footer.php"); ?>

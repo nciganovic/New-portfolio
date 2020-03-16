@@ -27,13 +27,23 @@
         }
     }
     
-    //Get all blogs 
-    $offset = 0;
-
-    $sql = "SELECT b.id, b.title, b.description, b.bgimgsrc, b.date, c.name as 'ctgname' FROM blogs b inner join categories c on c.id = b.categoryid ORDER BY date DESC  LIMIT 3";
-    $stmt = $pdo->prepare($sql);
-    $stmt->execute();
-    $allBlogs = $stmt->fetchAll();
+    if(isset($_GET["ctg"]) && !empty($_GET["ctg"])){
+        $hasCtg = true;
+        $sql = "SELECT b.id, b.title, b.description, b.bgimgsrc, b.date, c.name as 'ctgname' FROM blogs b inner join categories c on c.id = b.categoryid WHERE c.name = :ctg ORDER BY date DESC ";
+        $stmt = $pdo->prepare($sql);
+        $stmt->bindParam(":ctg", $_GET["ctg"]);
+        $stmt->execute();
+        $allBlogs = $stmt->fetchAll();
+    }
+    else{
+        //Get all blogs 
+        $hasCtg = false;
+        $sql = "SELECT b.id, b.title, b.description, b.bgimgsrc, b.date, c.name as 'ctgname' FROM blogs b inner join categories c on c.id = b.categoryid ORDER BY date DESC  LIMIT 3";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute();
+        $allBlogs = $stmt->fetchAll();
+    }
+    
 
 ?>
 
@@ -76,7 +86,7 @@
                     <!-- Blogs -->
                     <?php foreach($allBlogs as $blog): ?>
                     <div class="col-12 p-4 mt-4 mb-2 bg-white box-shadow">
-                        <p class="p-3 text-center border-dashed color-gray"><?= strtoupper($blog["ctgname"]) ?></p>
+                        <p class="p-3 text-center border-dashed color-gray"> <a href="<?= $_SERVER["PHP_SELF"]."?ctg=".strtolower($blog["ctgname"])?>">  <?= strtoupper($blog["ctgname"]) ?> </a></p>
                         <h2 class="text-center"><?= $blog["title"] ?></h2>
                         <div class="d-flex justify-content-center">
                             <div class="pb-3 pt-2 color-gray"><i class="far fa-clock"></i> <?= date("d-M-Y", strtotime($blog["date"]));  ?></div>
@@ -91,12 +101,12 @@
                     
                     <div class="show-new-blogs">
                     </div>
-                    
+                    <?php if(!$hasCtg): ?>
                     <div class="click-new-blogs">
-                        <p class="w-100 text-center m-0 mt-5"><a class="text-dark loadblog" href="#" data="<?= $GLOBALS["offset"] ?>">More blogs</a></p>
-                        <div class="w-100 d-flex "><a href="#" data="<?= $GLOBALS["offset"] ?>" class="m-auto loadblog"><i class="fas fa-chevron-down"></i></a></div>
+                        <p class="w-100 text-center m-0 mt-5"><a class="text-dark loadblog" href="#" data="0">More blogs</a></p>
+                        <div class="w-100 d-flex "><a href="#" data="0" class="m-auto loadblog"><i class="fas fa-chevron-down"></i></a></div>
                     </div>
-                    
+                    <?php endif ?>
                 </div>
                 <div class="col-4 pools mt-4" data="<?=$_SESSION["userid"]?>">
                     <!-- Pools -->
