@@ -9,7 +9,7 @@
        include("include/getqa.php");
     }
     else{
-        $sql = "SELECT id, name FROM question";
+        $sql = "SELECT id, name FROM question WHERE active = 1";
         $stmt = $pdo->prepare($sql);
         $stmt->execute();
         $allQuestions = $stmt->fetchAll();
@@ -29,7 +29,7 @@
     
     if(isset($_GET["ctg"]) && !empty($_GET["ctg"])){
         $hasCtg = true;
-        $sql = "SELECT b.id, b.title, b.description, b.bgimgsrc, b.date, c.name as 'ctgname' FROM blogs b inner join categories c on c.id = b.categoryid WHERE c.name = :ctg ORDER BY date DESC ";
+        $sql = "SELECT b.id, b.title, b.description, b.bgimgsrc, b.date, c.name as 'ctgname' FROM blogs b inner join categories c on c.id = b.categoryid WHERE c.name = :ctg AND active = 1 ORDER BY date DESC ";
         $stmt = $pdo->prepare($sql);
         $stmt->bindParam(":ctg", $_GET["ctg"]);
         $stmt->execute();
@@ -38,7 +38,7 @@
     else{
         //Get all blogs 
         $hasCtg = false;
-        $sql = "SELECT b.id, b.title, b.description, b.bgimgsrc, b.date, c.name as 'ctgname' FROM blogs b inner join categories c on c.id = b.categoryid ORDER BY date DESC  LIMIT 3";
+        $sql = "SELECT b.id, b.title, b.description, b.bgimgsrc, b.date, c.name as 'ctgname' FROM blogs b inner join categories c on c.id = b.categoryid WHERE active = 1 ORDER BY date DESC  LIMIT 3";
         $stmt = $pdo->prepare($sql);
         $stmt->execute();
         $allBlogs = $stmt->fetchAll();
