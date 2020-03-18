@@ -53,6 +53,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blog</title>
+    <meta name="description" content="Hello, my name is Nikola Ciganovic, i am software developer and i write every week about programming, new technology and books.">
+    <meta name="keywords" content="blog, programming, web development, books, tutorial">
+    <meta name="author" content="Nikola Ciganovic">
 
     <script src="https://kit.fontawesome.com/d27711fee5.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Montserrat|Open+Sans|Raleway:400,900&display=swap" rel="stylesheet">
@@ -92,7 +95,7 @@
                             <div class="pb-3 pt-2 color-gray"><i class="far fa-clock"></i> <?= date("d-M-Y", strtotime($blog["date"]));  ?></div>
                         </div>
                         <div>
-                            <img class="w-100" src="img/<?=$blog["bgimgsrc"] ?>" alt="Slika 1">
+                            <img class="w-100" src="img/<?=$blog["bgimgsrc"] ?>" alt="<?= $blog["title"] ?>">
                         </div>
                         <p class="mt-3"><?= $blog["description"] ?></p>
                         <p class="text-center p-3"><a class="p-3 read-more-btn" href="blogdetail.php?id=<?= $blog["id"] ?>">READ MORE</a></p>

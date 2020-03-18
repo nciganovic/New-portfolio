@@ -96,8 +96,9 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
+  <meta name="description" content="Hello, my name is Nikola Ciganovic, i am software developer and i write every week about programming, new technology and books.">
+  <meta name="keywords" content="blog, programming, web development, books, tutorial">
+  <meta name="author" content="Nikola Ciganovic">
 
   <title>SB Admin 2 - Login</title>
 

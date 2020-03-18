@@ -25,6 +25,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="<?=$blog["description"]?>">
     <meta name="keywords" content="<?=$blog["keywords"]?>">
+    <meta name="author" content="Nikola Ciganovic">
+    
     <title>Blog</title>
 
     <script src="https://kit.fontawesome.com/d27711fee5.js"></script>
@@ -65,7 +67,7 @@
                             <div class="pb-3 pt-2 color-gray"><i class="far fa-clock"></i> <?= date("d-M-Y", strtotime($blog["date"]));  ?></div>
                         </div>
                         <div>
-                            <img class="w-100" src="img/<?=$blog["bgimgsrc"] ?>" alt="Slika 1">
+                            <img class="w-100" src="img/<?=$blog["bgimgsrc"] ?>" alt="<?= $blog["title"] ?>">
                         </div>
                         <div class="mt-3"><?=$blog["text"] ?></div>
                         

@@ -49,7 +49,7 @@
   $allBlogs = $stmt->fetchAll();
 
   session_start();
-
+  
 ?>
 
 <!DOCTYPE html>
