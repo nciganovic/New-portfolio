@@ -87,7 +87,7 @@
     <link rel="stylesheet" type="text/css" href="css/proj.css">
     <link rel="stylesheet" type="text/css" href="css/media.css">
 </head>
-<body>
+<body class="theme-blue-3">
     <?php include("include/navbar.php"); ?>
     
     <!-- INTRO PAGE START -->
@@ -109,25 +109,25 @@
     <!-- INTRO PAGE END -->
 
     <!-- ABOUT ME START -->
-    <section id="about-me">
+    <section id="about-me" class="pb-5">
       <div class="container pt-5 pb-5">
         <div class="row">
-          <div class="col-xs-12 col-md-4 mt-5 img-prof">
-            <img class="w-75" src="img/prof.jpeg" alt="profile image">
+          <div class="col-xs-12 col-md-4 mt-5 img-prof ">
+            <img class="w-75 br" src="img/prof.jpeg" alt="profile image">
           </div>
-          <div class="col-xs-12 col-md-4 mt-5 bg-prof d-none">
+          <div class="col-xs-12 col-md-4 mt-5 bg-prof d-none br">
             <!--display none on small-->
           </div>
           <div id="about-me-txt" class="col-xs-12 col-md-7 mt-5">
-            <h2 class="mont"><strong>ABOUT ME</strong></h2>
-            <p>Web developer</p>
-            <p>I'm <strong>Nikola Ciganović</strong>, a Web Developer from Belgrade, Serbia. I'm currently a college student in ICT College of Vocational studies, studying Web Development.</p>
-            <p>My favorite thing to do is to create stuff using my programming knowledge. If you want to contact me you can find my email inside CV.</p>
+            <h2 class="mont">ABOUT ME</h2>
+            <p class="raleway-p">Web developer</p>
+            <p class="raleway-p">I'm <strong>Nikola Ciganović</strong>, a Web Developer from Belgrade, Serbia. I'm currently a college student in ICT College of Vocational studies, studying Web Development.</p>
+            <p class="raleway-p">My favorite thing to do is to create stuff using my programming knowledge. If you want to contact me you can find my email inside CV.</p>
             <p>
               <?php foreach($socMedia as $sm): ?>
                 <a target="blank" href="<?=$sm["href"]?>"><i class="fab <?=$sm["logo"]?> text-dark font-15 mr-3"></i></a> 
               <?php endforeach ?>
-            <p class="mt-5"> <a id="cv-btn" href="CV-new.pdf">Download CV</a> </p>
+            <p class="mt-5"> <a id="cv-btn" class="raleway-p br" href="CV-new.pdf">Download CV</a> </p>
           </div>
         </div>
       </div>
@@ -135,21 +135,21 @@
     <!-- ABOUT ME END -->
   
     <!-- MY SKILLS START -->
-    <section id="skills">
+    <section id="skills" class="theme-blue-1 pb-5">
       <div class="container">
         <div class="row d-flex justify-content-center align-items-center">
           <div class="col-12">
-            <h2 class="text-center mont m-5"><strong>SKILLS</strong></h2>
+            <h2 class="text-center mont m-5 txt-theme-3">SKILLS</h2>
           </div>
           <?php for($i = 0; $i < count($arrSkills); $i++): ?>
-          <div id="skill-card" class="mt-3 p-3 border d-flex justify-content-center flex-column align-items-center">
+          <div id="skill-card" class="mt-3 p-3 border d-flex justify-content-center flex-column align-items-center theme-blue-3 br">
             <?php foreach($arrSkills[$i] as $x ): ?>
-            <i id="skill-icon" class="fas <?=$x["icon"]?>"></i>
-            <h3><strong class="mont"><?=$x["name"]?></strong></h3>
+            <i id="skill-icon" class="fas text-dark <?=$x["icon"]?>"></i>
+            <h3><strong class="raleway-h1 text-dark"><?=$x["name"]?></strong></h3>
             <?php break; ?>
             <?php endforeach ?>
             <?php foreach($arrSkills[$i] as $x ): ?>
-              <p><?=$x["Name"]?></p>
+              <p class="text-dark raleway-p"><?=$x["Name"]?></p>
             <?php endforeach ?>
           </div>
           <?php endfor ?>
@@ -167,23 +167,23 @@
         <!-- First Featured Project -->
         <?php for($i = 0; $i < count($allProjects); $i++): ?>
         <div class="row project-holder mt-5">
-          <div class="col-lg-6 aos-init aos-animate" data-aos="fade-up-right" data-aos-duration="1000">
-            <a href="#" target="_blank">
-              <img src="img/<?=$allProjects[$i]["imgsrc"]?>" alt="Portfolio Website" class="img-fluid">
+          <div class="col-lg-6">
+            <a href="<?=$allProjects[$i]["weburl"]?>" target="_blank">
+              <img src="img/<?=$allProjects[$i]["imgsrc"]?>" alt="<?=$allProjects[$i]["title"]?>" class="img-fluid">
             </a>
           </div>
-          <div class="col-lg-6 aos-init aos-animate" data-aos="fade-up-left" data-aos-duration="1000">
-            <h4><?=$allProjects[$i]["title"]?></h4>
-            <p><?=$allProjects[$i]["description"]?></p>
+          <div class="col-lg-6 mt-on-small">
+            <h4 class="raleway-p font-weight-bold"><?=$allProjects[$i]["title"]?></h4>
+            <p class="raleway-p"><?=$allProjects[$i]["description"]?></p>
             <div class="tech-used-list">
               <?php foreach($arrProjSkills[$i] as $ps): ?>
-              <div><?= $ps[0] ?></div>
+              <div class="raleway-p"><?= $ps[0] ?></div>
               <?php endforeach ?>
             </div>
             <div class="external-link">
-              <a href="<?=$allProjects[$i]["weburl"]?>" class="btn btn-full">Visit website</a>
-              <a href="<?=$allProjects[$i]["giturl"]?>" class="btn btn-full">Source code</a>
-              <a id="<?=$allProjects[$i]["demoid"]?>" href="#" class="btn btn-full open-modal-btn">Demo</a>
+              <a href="<?=$allProjects[$i]["weburl"]?>" class="btn btn-full raleway-p rounded-pill pl-3 pr-3 pt-2 pb-2 proj-btn d-none">Visit website</a>
+              <a href="<?=$allProjects[$i]["giturl"]?>" class="btn btn-full raleway-p rounded-pill pl-3 pr-3 pt-2 pb-2 proj-btn d-none">Source code</a>
+              <a id="<?=$allProjects[$i]["demoid"]?>" href="#" class="btn btn-full open-modal-btn raleway-p rounded-pill pl-3 pr-3 pt-2 pb-2 proj-btn d-none">Demo</a>
             </div>
           </div>
         </div>
@@ -194,31 +194,31 @@
     <!-- PROJECTS END -->
 
     <!-- CONTACT ME START -->
-    <section id="contact">
-      <div class="container mt-5">
+    <section id="contact" class="theme-blue-1">
+      <div class="container mt-5 pb-5">
         <div class="row">
           <div class="col-12">
-            <h2 class="text-center mont">CONTACT</h2>
+            <h2 class="text-center mont m-5 txt-theme-3">CONTACT</h2>
           </div>
         </div>
         <div class="row">
-          <div class="col-6 mt-3">
-            <input type="text" class="form-control" name="Name" placeholder="First name">
+          <div class="col-xl-6 col-lg-12 mt-3">
+            <input type="text" class="form-control raleway-p theme-blue-3" name="Name" placeholder="First name">
           </div>
-          <div class="col-6 mt-3">
-            <input type="text" class="form-control" name="Email" placeholder="Email">
-          </div>
-          <div class="col-12 mt-3">
-            <input type="text" class="form-control" name="Subject" placeholder="Subject">
+          <div class="col-xl-6 col-lg-12 mt-3">
+            <input type="text" class="form-control raleway-p theme-blue-3" name="Email" placeholder="Email">
           </div>
           <div class="col-12 mt-3">
-            <textarea class="form-control w-100" name="Message" placeholder="Message"></textarea>
+            <input type="text" class="form-control raleway-p theme-blue-3" name="Subject" placeholder="Subject">
+          </div>
+          <div class="col-12 mt-3">
+            <textarea class="form-control w-100 raleway-p theme-blue-3" name="Message" placeholder="Message"></textarea>
           </div>
         </div>
         <div class="col-12 mt-3 pl-0">
-          <button type="button" class="btn btn-success send-email">Send Email</button>
+          <button type="button" class="btn send-email raleway-p theme-blue-3 font-12">Send Email</button>
         </div>   
-        <div class="col-12 mt-3 form-errors">
+        <div class="col-12 mt-3 form-errors raleway-p">
           
         </div>      
       </div>
@@ -232,20 +232,22 @@
         <div class="col-12">
           <h2 class="text-center mont">BLOGS</h2>
         </div>
-        <div class="card-deck mt-5">
-          <?php foreach($allBlogs as $blog): ?>
-          <a href="blogdetail.php?id=<?=$blog["id"]?>" class="card">
-            <img class="card-img-top" src="img/<?=$blog["bgimgsrc"]?>" alt="<?=$blog["title"]?>">
-            <div class="card-body">
-              <h3 class="card-title"><?=$blog["title"]?></h3>
-              <p class="card-text"><?=$blog["description"]?></p>
-              <p class="card-text"><small class="text-muted"><?= date("d-M-Y", strtotime($blog["date"]));  ?></small></p>
-            </div>
-            <div class="card-footer">
-              <small class="text-muted"><?=$blog["ctgname"]?></small>
-            </div>
-          </a>
-          <?php endforeach ?>
+        <div class="d-flex">
+          <div class="card-deck">
+            <?php foreach($allBlogs as $blog): ?>
+            <a href="blogdetail.php?id=<?=$blog["id"]?>" class="card p-0">
+              <img class="card-img-top" src="img/<?=$blog["bgimgsrc"]?>" alt="<?=$blog["title"]?>">
+              <div class="card-body">
+                <h3 class="card-title raleway-p"><?=$blog["title"]?></h3>
+                <p class="card-text raleway-p"><?=$blog["description"]?></p>
+                <p class="card-text raleway-p"><small class="text-muted"><?= date("d-M-Y", strtotime($blog["date"]));  ?></small></p>
+              </div>
+              <div class="card-footer">
+                <small class="text-muted raleway-p"><?=$blog["ctgname"]?></small>
+              </div>
+            </a>
+            <?php endforeach ?>
+          </div>
         </div>
       </div>
     </section>

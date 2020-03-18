@@ -19,6 +19,9 @@
     .project-btn{
         font-size: 1.5rem;
     }
+    .proj-btn{
+        display: inline-block !important;
+    }
 }
 
 @media (min-width: 768px) { 
@@ -54,11 +57,14 @@
     .fab{
         font-size: 2rem;
     }
-    #skills h2{
+    h2{
         font-size: 3rem;
     }
-    #projects h2{
-        font-size: 3rem;
+    .mt-on-small{
+        margin: 0px;
+    }
+    .card-deck{
+        display: contents;
     }
 }
 

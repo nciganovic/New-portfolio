@@ -22,8 +22,29 @@ html {
     transition: 0.2s ease-in-out;
 }
 .dark-nav{
-    background-color: #322e2f;
+    background-color: #1e1f26;
     transition: 0.2s ease-in-out;
+}
+.text-dark{
+    color: #1e1f26 !important;
+}
+.theme-dark{
+    background-color: #1e1f26;
+}
+.theme-blue-1{
+    background-color: #283655;
+}
+.theme-blue-2{
+    background-color: #4D648D;
+}
+.theme-blue-3{
+    background-color: #d0e1f9;
+}
+.txt-theme-3{
+    color: #d0e1f9;
+}
+.br{
+    border-radius: 3px;
 }
 .dark-bg{
     background-color: #322e2f;
@@ -52,7 +73,7 @@ html {
 }
 /* Intro page */
 #intro-page{
-    background-image: url('../img/bg.jpg');
+    background-image: url('../img/bg-image.jpg');
     height: 100vh; 
     background-position: center; 
     background-repeat: no-repeat; 
@@ -71,7 +92,7 @@ html {
 }
 /* About me */
 #cv-btn{
-    background-color: #322e2f;
+    background-color: #1e1f26;
     color: white;
     padding-left: 7%;
     padding-right: 7%;
@@ -91,10 +112,6 @@ html {
     background-size: cover;
 }
 /* My skills */
-#skills{
-    margin-top: 5%;
-    margin-bottom: 5%;
-}
 #skill-icon{
     font-size: 4rem;
     padding-top: 5%;
@@ -104,11 +121,9 @@ html {
     width: 250px;
     margin: 1.5%;
     transition: all .2s ease-in-out;
-    box-shadow: 5px 5px 5px 0px rgba(161,158,161,1);
 }
 #skill-card:hover{
     transform: scale(1.1);
-    background-color: #eefac2;
 }
 
 /* PROJECTS */
@@ -175,6 +190,9 @@ html {
     background: rgb(119,117,120);
     background: linear-gradient(322deg, rgba(119,117,120,1) 0%, rgba(94,92,94,1) 0%, rgba(73,71,73,1) 10%, rgba(66,65,66,1) 16%, rgba(59,59,59,1) 22%, rgba(53,53,53,1) 33%, rgba(0,0,0,1) 100%);
 }
+.mt-on-small{
+    margin-top: 15px;
+}
 /* Footer */
 footer{
     margin-top: 10%;
@@ -239,6 +257,9 @@ footer{
     transition: all .2s ease-in-out;
     color: black;
     box-shadow: 5px 5px 5px 0px rgba(161,158,161,1);
+    border: 0px;
+    width: 80% !important;
+    margin-top: 40px;
 }
 .card h3{
     color: black;
@@ -251,4 +272,13 @@ footer{
 .card:hover{
     transform: scale(1.1);
     text-decoration: none;
+}
+.card-deck{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+/* Contact */
+.send-email:hover{
+    background-color: #4D648D;
 }

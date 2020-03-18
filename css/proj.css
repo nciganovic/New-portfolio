@@ -14,21 +14,26 @@
 	border-radius: 100px;
 	margin-right: 7px;
 	margin-top: 7px;
-    background-color: #105a8b;
+    background-color: #283655;
     font-size: 0.8rem;
 }
 
-.external-link {
+.external-link{
 	margin-top: 20px;
-	border-top: 1px solid #3875d8;
+	border-top: 1px solid #283655;
 	padding-top: 20px;
 }
 
 .btn-full:link, .btn-full:visited {
-    background-color: #0e4d88;
-    border: 1px solid #0e4d88;
+    background-color: #283655;
     color: #fcfcfc;
-    margin-right: 15px;
+	margin-right: 15px;
+	font-size: 1.2rem;
+}
+
+.btn-full:link, .btn-full:visited:hover {
+    background-color: #4D648D;
+    
 }
 
 .project-holder {
