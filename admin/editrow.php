@@ -198,6 +198,20 @@
 
   <!-- Bootstrap core JavaScript-->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script>
+    tinymce.init({
+      selector: 'textarea',  // change this value according to your HTML
+      content_css: ['//fonts.googleapis.com/css?family=Montserrat|Open+Sans|Raleway:400,900&display=swap'],
+      font_formats: 'Arial Black=arial black,avant garde;Raleway=raleway,Montserrat=montserrat, cursive;Times New Roman=times new roman,times;',
+      plugins: [
+        'advlist autolink link image lists charmap print preview hr anchor pagebreak spellchecker',
+        'searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking',
+        'table emoticons template paste help codesample'
+      ],
+      toolbar: "codesample"
+    });
+
+  </script>
 </body>
 
 </html>
