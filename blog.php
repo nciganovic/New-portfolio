@@ -62,8 +62,10 @@
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="css/blog.css">
+    <link rel="stylesheet" type="text/css" href="css/mediablog.css">
 </head>
-<body style="background-color: #f5f3f2;">
+<body class="theme-blue-3">
+    <div class="main-container">
     <?php include("include/navbar.php"); ?>
 
     <!-- INTRO PAGE START -->
@@ -85,20 +87,20 @@
     <section id="blog">
         <div class="container">
             <div class="row">
-                <div class="col-8 all-blogs">
+                <div class="col-xs-12 col-lg-8 all-blogs p-2">
                     <!-- Blogs -->
                     <?php foreach($allBlogs as $blog): ?>
-                    <div class="col-12 p-4 mt-4 mb-2 bg-white box-shadow">
-                        <p class="p-3 text-center border-dashed color-gray"> <a href="<?= $_SERVER["PHP_SELF"]."?ctg=".strtolower($blog["ctgname"])?>">  <?= strtoupper($blog["ctgname"]) ?> </a></p>
-                        <h2 class="text-center"><?= $blog["title"] ?></h2>
+                    <div class="col-12 p-4 mt-4 mb-2 bg-white box-shadow br">
+                        <p class="p-3 text-center border-dashed color-gray"> <a class="mont" href="<?= $_SERVER["PHP_SELF"]."?ctg=".strtolower($blog["ctgname"])?>">  <?= strtoupper($blog["ctgname"]) ?> </a></p>
+                        <h2 class="text-center raleway-p font-weight-bold"><?= $blog["title"] ?></h2>
                         <div class="d-flex justify-content-center">
-                            <div class="pb-3 pt-2 color-gray"><i class="far fa-clock"></i> <?= date("d-M-Y", strtotime($blog["date"]));  ?></div>
+                            <div class="pb-3 pt-2 color-gray raleway-p"><i class="far fa-clock"></i> <?= date("d-M-Y", strtotime($blog["date"]));  ?></div>
                         </div>
                         <div>
-                            <img class="w-100" src="img/<?=$blog["bgimgsrc"] ?>" alt="<?= $blog["title"] ?>">
+                            <img class="w-100 br" src="img/<?=$blog["bgimgsrc"] ?>" alt="<?= $blog["title"] ?>">
                         </div>
-                        <p class="mt-3"><?= $blog["description"] ?></p>
-                        <p class="text-center p-3"><a class="p-3 read-more-btn" href="blogdetail.php?id=<?= $blog["id"] ?>">READ MORE</a></p>
+                        <p class="mt-3 raleway-p"><?= $blog["description"] ?></p>
+                        <p class="text-center p-3"><a class="p-3 read-more-btn raleway-p br theme-blue-1" href="blogdetail.php?id=<?= $blog["id"] ?>">READ MORE</a></p>
                     </div>
                     <?php endforeach ?>
                     
@@ -106,8 +108,8 @@
                     </div>
                     <?php if(!$hasCtg): ?>
                     <div class="click-new-blogs">
-                        <p class="w-100 text-center m-0 mt-5"><a class="text-dark loadblog" href="#" data="0">More blogs</a></p>
-                        <div class="w-100 d-flex "><a href="#" data="0" class="m-auto loadblog"><i class="fas fa-chevron-down"></i></a></div>
+                        <p class="w-100 text-center m-0 mt-5"><a class="text-dark loadblog raleway-p" href="#" data="0">More blogs</a></p>
+                        <div class="w-100 d-flex "><a href="#" data="0" class="m-auto loadblog font-15 text-dark"><i class="fas fa-chevron-down"></i></a></div>
                     </div>
                     <?php endif ?>
                 </div>
@@ -115,19 +117,22 @@
                     <!-- Pools -->
 
                     <?php for($i = 0; $i < count($allQuestions); $i++): ?>
-                    <div class="w-100 p-3 mb-3 bg-white box-shadow">
-                        <p><?= $allQuestions[$i]["name"] ?></p>
-                        <ul class="ml-5">
+                    <div class="w-100 p-3 mb-3 bg-white box-shadow br d-none question-card">
+                        <p class="text-center raleway-p"><?= $allQuestions[$i]["name"] ?></p>
+                        <div class="d-flex mt-3 mb-3">
+                        <ul class="m-auto">
                             <?php foreach($allAnswers[$i] as $a): ?>
-                            <li><input type="radio" name="<?= $allQuestions[$i]["id"] ?>" value="<?=$a["name"]?>"> <?=$a["name"]?> </li>
+                            <li><input type="radio" name="<?= $allQuestions[$i]["id"] ?>" value="<?=$a["name"]?>"> <label class="raleway-p"><?=$a["name"]?></label> </li>
                             <?php endforeach ?>
                         </ul> 
-                        
+                        </div>
+                        <div class="d-flex">
                         <?php if(isset($_SESSION["userid"])): ?>
-                        <button class="btn btn-success ml-5 answer-btn" data="<?=$allQuestions[$i]["id"]?>">Answer</button> 
+                        <button class="btn theme-blue-1 answer-btn m-auto raleway-p text-light btn-question" data="<?=$allQuestions[$i]["id"]?>">Answer</button> 
                         <?php else: ?>
-                        <button class="btn btn-success ml-5 alert-btn">Answer</button> 
+                        <button class="btn theme-blue-1 alert-btn m-auto raleway-p text-light btn-question">Answer</button> 
                         <?php endif ?>
+                        </div>
                     </div>
                     <?php endfor ?>
                 </div>
@@ -144,5 +149,6 @@
     <script src="js/main.js"></script>
     <script src="js/pool.js"></script>
     <script src="js/moreblogs.js"></script>
+    </div>
 </body>
 </html>

@@ -127,7 +127,52 @@ html {
 }
 
 /* PROJECTS */
+.tech-used-list {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-ms-flex-wrap: wrap;
+	flex-wrap: wrap;
+}
 
+.tech-used-list div {
+	font-size: 65%;
+	text-transform: uppercase;
+	color: white;
+	padding: 3px 8px;
+	border-radius: 100px;
+	margin-right: 7px;
+	margin-top: 7px;
+    background-color: #283655;
+    font-size: 0.8rem;
+}
+
+.external-link{
+	margin-top: 20px;
+	border-top: 1px solid #283655;
+	padding-top: 20px;
+}
+
+.btn-full{
+    background-color: #283655;
+    color: #fcfcfc;
+	margin-right: 15px;
+	font-size: 1.2rem;
+}
+
+.btn-full:hover {
+    background-color: #4D648D;
+    color: #fcfcfc;
+}
+
+.project-holder {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
+}
 /* entire container, keeps perspective */
 .flip-container {
 	perspective: 1000px;

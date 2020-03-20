@@ -1,0 +1,26 @@
+
+@media (min-width: 576px) { 
+    
+}
+
+@media (min-width: 768px) { 
+    h2{
+        font-size: 2rem;
+    }
+
+ }
+
+
+@media (min-width: 992px) { 
+    .question-card{
+        display: block !important;
+    }
+    .all-blogs{
+        padding: 0px !important;
+    }
+}
+
+
+@media (min-width: 1200px) {  
+
+}

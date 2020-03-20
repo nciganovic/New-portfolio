@@ -37,6 +37,7 @@
     <link rel="stylesheet" type="text/css" href="css/blog.css">
 </head>
 <body style="background-color: #f5f3f2;">
+    <div class="main-container">
     <?php include("include/navbar.php"); ?>
 
     <!-- INTRO PAGE START -->
@@ -61,10 +62,10 @@
                 <div class="col-12">
                     <!-- Blogs -->
                     <div class="col-12 p-4 mt-4 mb-2 bg-white box-shadow">
-                        <p class="p-3 text-center border-dashed color-gray"><?= strtoupper($blog["ctgname"]) ?></p>
-                        <h2 class="text-center"><?= $blog["title"] ?></h2>
+                        <p class="p-3 text-center border-dashed color-gray raleway-p"><?= strtoupper($blog["ctgname"]) ?></p>
+                        <h2 class="text-center raleway-p"><?= $blog["title"] ?></h2>
                         <div class="d-flex justify-content-center">
-                            <div class="pb-3 pt-2 color-gray"><i class="far fa-clock"></i> <?= date("d-M-Y", strtotime($blog["date"]));  ?></div>
+                            <div class="pb-3 pt-2 color-gray raleway-p"><i class="far fa-clock"></i> <?= date("d-M-Y", strtotime($blog["date"]));  ?></div>
                         </div>
                         <div>
                             <img class="w-100" src="img/<?=$blog["bgimgsrc"] ?>" alt="<?= $blog["title"] ?>">
@@ -86,5 +87,6 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <script src="js/main.js"></script>
     <script src="js/pool.js"></script>
+    </div>
 </body>
 </html>

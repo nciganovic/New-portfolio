@@ -3,7 +3,7 @@
   include("includes/checkuserrole.php");
 
   if(isset($_GET["table"])){
-    $db = "portfolio";
+    $db = "test";
     $table = $_GET["table"];
     
     try{
@@ -191,13 +191,16 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script>
     tinymce.init({
-      selector: 'textarea',
-      plugins: 'a11ychecker advcode casechange formatpainter linkchecker autolink lists checklist media mediaembed pageembed permanentpen powerpaste table advtable tinycomments tinymcespellchecker',
-      toolbar: 'a11ycheck addcomment showcomments casechange checklist code formatpainter pageembed permanentpen table',
-      toolbar_mode: 'floating',
-      tinycomments_mode: 'embedded',
-      tinycomments_author: 'Author name',
+      selector: 'textarea',  // change this value according to your HTML
+      content_css: ['//fonts.googleapis.com/css?family=Montserrat|Open+Sans|Raleway:400,900&display=swap'],
+      font_formats: 'Arial Black=arial black,avant garde;Raleway=raleway,Montserrat=montserrat, cursive;Times New Roman=times new roman,times;',
+      plugins: [
+        'advlist autolink link image lists charmap print preview hr anchor pagebreak spellchecker',
+        'searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking',
+        'table emoticons template paste help'
+      ],
     });
+
   </script>
 </body>
 

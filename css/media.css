@@ -54,9 +54,6 @@
     #about-me-txt p{
         font-size: 1.2rem;
     }
-    .fab{
-        font-size: 2rem;
-    }
     h2{
         font-size: 3rem;
     }
@@ -75,8 +72,5 @@
     }
     .modal-desc{
         display: flex;
-    }
-    .close-sm{
-        display: none !important;
     }
 }

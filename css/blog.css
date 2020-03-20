@@ -6,6 +6,23 @@
 html {
     scroll-behavior: smooth;
   }
+html,
+body {
+ height: 100%;
+ position: relative;
+}
+.main-container {
+ min-height: 100vh; /* will cover the 100% of viewport */
+ overflow: hidden;
+ display: block;
+ position: relative;
+ padding-bottom: 250px; /* height of your footer */
+}
+footer {
+ position: absolute;
+ bottom: 0;
+ width: 100%;
+}
 .raleway-h1{
     font-family: 'Raleway', sans-serif;
     font-weight: 900;
@@ -32,6 +49,12 @@ html {
     background-color: rgb(54, 158, 243);
     color: black !important;
 }
+.br{
+    border-radius: 3px;
+}
+h2{
+    font-size: 1.3rem;
+}
 .h-540{
     height: 400px;
 }
@@ -49,6 +72,37 @@ html {
 }
 .h1{
     font-size: 2.5rem;
+}
+.theme-dark{
+    background-color: #1e1f26;
+}
+.dark-nav{
+    background-color: #1e1f26;
+    transition: 0.2s ease-in-out;
+}
+.text-dark{
+    color: #1e1f26 !important;
+}
+.theme-dark{
+    background-color: #1e1f26;
+}
+.theme-blue-1{
+    background-color: #283655;
+}
+.theme-blue-2{
+    background-color: #4D648D;
+}
+.theme-blue-3{
+    background-color: #d0e1f9;
+}
+.txt-theme-3{
+    color: #d0e1f9;
+}
+.br{
+    border-radius: 3px;
+}
+.dark-bg{
+    background-color: #322e2f;
 }
 /* Intro page */
 #intro-page{
@@ -75,11 +129,10 @@ ul li{
     background-color: white;
 }
 .read-more-btn{
-    background-color: #0394fc;
     color: white;
 }
 .read-more-btn:hover{
-    background-color: #0394fc6e;
+    background-color: #4D648D;
     color: white;
     text-decoration: none;
 }

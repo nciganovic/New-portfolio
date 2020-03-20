@@ -1,6 +1,6 @@
 <?php
     $table = $_GET["table"];
-    $db = "portfolio";
+    $db = "test";
 
     $sql = "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA = :db AND TABLE_NAME = :table";
     $stmt = $pdo->prepare($sql);

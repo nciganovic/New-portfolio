@@ -24,16 +24,16 @@
 	padding-top: 20px;
 }
 
-.btn-full:link, .btn-full:visited {
+.btn-full{
     background-color: #283655;
     color: #fcfcfc;
 	margin-right: 15px;
 	font-size: 1.2rem;
 }
 
-.btn-full:link, .btn-full:visited:hover {
+.btn-full:hover {
     background-color: #4D648D;
-    
+    color: #fcfcfc;
 }
 
 .project-holder {

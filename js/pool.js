@@ -41,15 +41,16 @@ $(document).ready(function(){
 function showQuestionsAndAnswers(questions, answers){
     var html = ""; 
     for(let i = 0; i < questions.length; i++){
-        html += `   <div class="w-100 p-3 mb-3 bg-white box-shadow">
-                        <p>${questions[i].name}</p>
-                        <ul class="ml-5">`
+        html += ` <div class="w-100 p-3 mb-3 bg-white box-shadow br d-none question-card">
+                        <p class="text-center raleway-p">${questions[i].name}</p>
+                        <div class="d-flex mt-3 mb-3">
+                        <ul class="m-auto">`
         
         for(a of answers[i]){
-            html += `<li><input type="radio" name="${questions[i].id}" value="${a.name}"> ${a.name} </li>`;
+            html += `<li><input type="radio" name="${questions[i].id}" value="${a.name}"><label class="raleway-p">${a.name}</label> </li>`;
         }
-        html += "</ul>";
-        html += `<button class="btn btn-success ml-5 answer-btn" data="${questions[i].id}">Answer</button> </div>`;
+        html += "</ul></div>";
+        html += `<div class="d-flex"><button class="btn theme-blue-1 answer-btn m-auto raleway-p btn-question text-light" data="${questions[i].id}">Answer</button> </div></div>`;
     }
 
     $(".pools").html(html);

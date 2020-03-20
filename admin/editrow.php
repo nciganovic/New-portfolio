@@ -4,7 +4,7 @@
   include("../include/connection.php");
 
   if(isset($_GET["table"]) && isset($_GET["id"])){
-    $db = "portfolio";
+    $db = "test";
     $table = $_GET["table"];
     $id = $_GET["id"];
 

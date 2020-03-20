@@ -84,7 +84,6 @@
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="css/style.css">
-    <link rel="stylesheet" type="text/css" href="css/proj.css">
     <link rel="stylesheet" type="text/css" href="css/media.css">
 </head>
 <body class="theme-blue-3">
@@ -169,7 +168,7 @@
         <div class="row project-holder mt-5">
           <div class="col-lg-6">
             <a href="<?=$allProjects[$i]["weburl"]?>" target="_blank">
-              <img src="img/<?=$allProjects[$i]["imgsrc"]?>" alt="<?=$allProjects[$i]["title"]?>" class="img-fluid">
+              <img src="img/<?=$allProjects[$i]["imgsrc"]?>" alt="<?=$allProjects[$i]["title"]?>" class="img-fluid br">
             </a>
           </div>
           <div class="col-lg-6 mt-on-small">
@@ -181,9 +180,14 @@
               <?php endforeach ?>
             </div>
             <div class="external-link">
-              <a href="<?=$allProjects[$i]["weburl"]?>" class="btn btn-full raleway-p rounded-pill pl-3 pr-3 pt-2 pb-2 proj-btn d-none">Visit website</a>
-              <a href="<?=$allProjects[$i]["giturl"]?>" class="btn btn-full raleway-p rounded-pill pl-3 pr-3 pt-2 pb-2 proj-btn d-none">Source code</a>
-              <a id="<?=$allProjects[$i]["demoid"]?>" href="#" class="btn btn-full open-modal-btn raleway-p rounded-pill pl-3 pr-3 pt-2 pb-2 proj-btn d-none">Demo</a>
+              <?php if($allProjects[$i]["title"] == "My personal website"): ?>
+                <a href="<?=$allProjects[$i]["giturl"]?>" class="btn btn-full raleway-p rounded-pill pl-3 pr-3 pt-2 pb-2 proj-btn d-none">Source code</a>
+              <?php else: ?>
+                <a target="_blank" href="<?=$allProjects[$i]["weburl"]?>" class="btn btn-full raleway-p rounded-pill pl-3 pr-3 pt-2 pb-2 proj-btn d-none">Visit website</a>
+                <a target="_blank" href="<?=$allProjects[$i]["giturl"]?>" class="btn btn-full raleway-p rounded-pill pl-3 pr-3 pt-2 pb-2 proj-btn d-none">Source code</a>
+                <a id="<?=$allProjects[$i]["demoid"]?>" href="#" class="btn btn-full open-modal-btn raleway-p rounded-pill pl-3 pr-3 pt-2 pb-2 proj-btn d-none">Demo</a>
+              <?php endif ?>
+              
             </div>
           </div>
         </div>
@@ -240,7 +244,7 @@
               <div class="card-body">
                 <h3 class="card-title raleway-p"><?=$blog["title"]?></h3>
                 <p class="card-text raleway-p"><?=$blog["description"]?></p>
-                <p class="card-text raleway-p"><small class="text-muted"><?= date("d-M-Y", strtotime($blog["date"]));  ?></small></p>
+                <p class="card-text"><small class="text-muted raleway-p"><?= date("d-M-Y", strtotime($blog["date"]));  ?></small></p>
               </div>
               <div class="card-footer">
                 <small class="text-muted raleway-p"><?=$blog["ctgname"]?></small>
@@ -259,8 +263,8 @@
     <!-- MODAL START -->
     <div id="modal">
       <div class="container-custom mt-30 bg-light bg-transparent">
-        <div class="row">
-          <div class="col-12 col-xl-8 p-0">
+        <div class="row d-flex">
+          <div class="col-lg-8 col-md-12 p-0 m-auto">
             <!--<img src="img/proj1.png" class="w-100">-->
             <div id="video" class="w-100 d-flex">
             <video autoplay controls loop muted class="w-100 border">
@@ -268,18 +272,6 @@
             </video>
           </div>
             <!--<img src="img/clothyy-final.gif" class="w-100 border">-->
-          </div>
-          <div class="col-md-4 bg-light modal-desc">
-              <a class="abs-top-right" href="#"><i class="text-dark fas fa-times float-right mt-2 float-right close-modal-btn"></i></a>
-              <div class="ml-3 pl-3 mtb-auto">
-                <h3 class="mt-3"><strong id="proj-title" class="mont"></strong></h3>
-                <p class="mt-3">Technologies i used:</p>
-                <ul id="proj-list" class="ml-3">
-                  
-                </ul>
-                <p id="proj-desc" class="font-08 mb-4 d-none"></p>
-                <a class="text-light text-decoration-none souce-btn rounded-pill" target="blank" href="#">SOURCE</a>
-              </div>
           </div>
           <div class="close-sm col-12 d-flex justify-content-center bg-transparent">
             <!-- display none on 1200+ px -->
