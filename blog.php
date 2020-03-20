@@ -88,30 +88,38 @@
         <div class="container">
             <div class="row">
                 <div class="col-xs-12 col-lg-8 all-blogs p-2">
-                    <!-- Blogs -->
-                    <?php foreach($allBlogs as $blog): ?>
-                    <div class="col-12 p-4 mt-4 mb-2 bg-white box-shadow br">
-                        <p class="p-3 text-center border-dashed color-gray"> <a class="mont" href="<?= $_SERVER["PHP_SELF"]."?ctg=".strtolower($blog["ctgname"])?>">  <?= strtoupper($blog["ctgname"]) ?> </a></p>
-                        <h2 class="text-center raleway-p font-weight-bold"><?= $blog["title"] ?></h2>
-                        <div class="d-flex justify-content-center">
-                            <div class="pb-3 pt-2 color-gray raleway-p"><i class="far fa-clock"></i> <?= date("d-M-Y", strtotime($blog["date"]));  ?></div>
-                        </div>
-                        <div>
-                            <img class="w-100 br" src="img/<?=$blog["bgimgsrc"] ?>" alt="<?= $blog["title"] ?>">
-                        </div>
-                        <p class="mt-3 raleway-p"><?= $blog["description"] ?></p>
-                        <p class="text-center p-3"><a class="p-3 read-more-btn raleway-p br theme-blue-1" href="blogdetail.php?id=<?= $blog["id"] ?>">READ MORE</a></p>
+                    <!-- Search Blogs -->
+                    <div class="col-12 d-flex p-0 mt-4">
+                        <input type="text" name="search" id="search" class="form-control raleway-p box-shadow" placeholder="Find blog..." />
+                        <button id="btn-search" class="btn theme-blue-1 text-light ml-3 raleway-p box-shadow">Search</button>
                     </div>
-                    <?php endforeach ?>
                     
-                    <div class="show-new-blogs">
+                    <!-- Blogs -->
+                    <div class="begin-blogs">
+                        <?php foreach($allBlogs as $blog): ?>
+                        <div class="col-12 p-4 mt-4 mb-2 bg-white box-shadow br">
+                            <p class="p-3 text-center border-dashed color-gray"> <a class="mont" href="<?= $_SERVER["PHP_SELF"]."?ctg=".strtolower($blog["ctgname"])?>">  <?= strtoupper($blog["ctgname"]) ?> </a></p>
+                            <h2 class="text-center raleway-p font-weight-bold"><?= $blog["title"] ?></h2>
+                            <div class="d-flex justify-content-center">
+                                <div class="pb-3 pt-2 color-gray raleway-p"><i class="far fa-clock"></i> <?= date("d-M-Y", strtotime($blog["date"]));  ?></div>
+                            </div>
+                            <div>
+                                <img class="w-100 br" src="img/<?=$blog["bgimgsrc"] ?>" alt="<?= $blog["title"] ?>">
+                            </div>
+                            <p class="mt-3 raleway-p"><?= $blog["description"] ?></p>
+                            <p class="text-center p-3"><a class="p-3 read-more-btn raleway-p br theme-blue-1" href="blogdetail.php?id=<?= $blog["id"] ?>">READ MORE</a></p>
+                        </div>
+                        <?php endforeach ?>
+                        
+                        <div class="show-new-blogs">
+                        </div>
+                        <?php if(!$hasCtg): ?>
+                        <div class="click-new-blogs">
+                            <p class="w-100 text-center m-0 mt-5"><a class="text-dark loadblog raleway-p" href="#" data="0">More blogs</a></p>
+                            <div class="w-100 d-flex "><a href="#" data="0" class="m-auto loadblog font-15 text-dark"><i class="fas fa-chevron-down"></i></a></div>
+                        </div>
+                        <?php endif ?>
                     </div>
-                    <?php if(!$hasCtg): ?>
-                    <div class="click-new-blogs">
-                        <p class="w-100 text-center m-0 mt-5"><a class="text-dark loadblog raleway-p" href="#" data="0">More blogs</a></p>
-                        <div class="w-100 d-flex "><a href="#" data="0" class="m-auto loadblog font-15 text-dark"><i class="fas fa-chevron-down"></i></a></div>
-                    </div>
-                    <?php endif ?>
                 </div>
                 <div class="col-4 pools mt-4" data="<?=$_SESSION["userid"]?>">
                     <!-- Pools -->

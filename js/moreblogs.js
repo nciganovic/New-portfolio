@@ -22,7 +22,8 @@ $(document).ready(function(){
                     $(".click-new-blogs").html("<p class='text-center raleway-p'>No more blogs available.</p>")
                 }
                 else{
-                    makeNewBlogs(data);
+                    var html = makeNewBlogs(data);
+                    $(".show-new-blogs").append(html);
                     $(".loadblog").attr("data", Number(offset) + 3);
                 }
             },  
@@ -30,6 +31,35 @@ $(document).ready(function(){
                 console.log(err);
             }
         })
+
+    })
+
+    $("#btn-search").click(function(){
+        
+        var search = $("#search").val();
+        search = search.trim();
+        
+        if(search != ""){
+            $.ajax({
+                url: "searchblog.php",
+                data:{
+                    search: search
+                },
+                method: "GET",
+                type: "text/json",
+                success: function(data){
+                    var data = JSON.parse(data);
+                    var html = makeNewBlogs(data);
+                    $(".begin-blogs").html(`<h2 class='text-center raleway-p mt-4'>Results of '${search}' search:</h2>`);
+                    $(".begin-blogs").append(html);
+                 
+                    
+                },
+                error: function(err){
+                    $(".begin-blogs").html(`<p class='text-center mt-5 raleway-p'>No blogs have '${search}' in their title or description.</p>`);
+                }
+            })
+        }
 
     })
 
@@ -74,5 +104,5 @@ function makeNewBlogs(data){
         `
     }
     
-    $(".show-new-blogs").append(html);
+    return html;
 }
