@@ -5,6 +5,9 @@
     $message = $_POST["message"];
     $headers = 'From: noreply @ company . com';
 
+    $subject = trim($subject);
+    $message = trim($message);
+
     var_dump($name);
     var_dump($email);
     var_dump($subject);

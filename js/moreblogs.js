@@ -56,7 +56,8 @@ $(document).ready(function(){
                     
                 },
                 error: function(err){
-                    $(".begin-blogs").html(`<p class='text-center mt-5 raleway-p'>No blogs have '${search}' in their title or description.</p>`);
+                    $(".begin-blogs").html(`<p class='text-center mt-5 raleway-p'>No blogs have '${search}' in their title or description.</p>
+                                            <p class='text-center mt-5'><a class="raleway-p" href="blog.php">Go back ?</a></p>`);
                 }
             })
         }

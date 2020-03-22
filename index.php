@@ -120,7 +120,7 @@
           <div id="about-me-txt" class="col-xs-12 col-md-7 mt-5">
             <h2 class="mont">ABOUT ME</h2>
             <p class="raleway-p">Web developer</p>
-            <p class="raleway-p">I'm <strong>Nikola Ciganović</strong>, a Web Developer from Belgrade, Serbia. I'm currently a college student in ICT College of Vocational studies, studying Web Development.</p>
+            <p class="raleway-p">I'm Nikola Ciganović, a Web Developer from Belgrade, Serbia. I'm currently a college student in ICT College of Vocational studies, studying Web Development.</p>
             <p class="raleway-p">My favorite thing to do is to create stuff using my programming knowledge. If you want to contact me you can find my email inside CV.</p>
             <p>
               <?php foreach($socMedia as $sm): ?>
@@ -185,7 +185,7 @@
               <?php else: ?>
                 <a target="_blank" href="<?=$allProjects[$i]["weburl"]?>" class="btn btn-full raleway-p rounded-pill pl-3 pr-3 pt-2 pb-2 proj-btn d-none">Visit website</a>
                 <a target="_blank" href="<?=$allProjects[$i]["giturl"]?>" class="btn btn-full raleway-p rounded-pill pl-3 pr-3 pt-2 pb-2 proj-btn d-none">Source code</a>
-                <a id="<?=$allProjects[$i]["demoid"]?>" href="#" class="btn btn-full open-modal-btn raleway-p rounded-pill pl-3 pr-3 pt-2 pb-2 proj-btn d-none">Demo</a>
+                <a id="<?=$allProjects[$i]["demoid"]?>" data="<?=$allProjects[$i]["mpsrc"]?>" href="#" class="btn btn-full open-modal-btn raleway-p rounded-pill pl-3 pr-3 pt-2 pb-2 proj-btn d-none demo-btn">Demo</a>
               <?php endif ?>
               
             </div>
@@ -231,7 +231,7 @@
     <!-- CONTACT ME END -->
 
     <!-- BLOGS START -->
-    <section id="contact">
+    <section id="blogs">
       <div class="container mt-5">
         <div class="col-12">
           <h2 class="text-center mont">BLOGS</h2>
